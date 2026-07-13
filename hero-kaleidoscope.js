@@ -5,23 +5,34 @@
   const el = document.getElementById("ascii-hero");
   if (!el) return;
 
+  const visual = el.closest('.hero-visual') || el;
+
   let loopStart = performance.now();
   let grid = { cols: 48, rows: 48, fontSize: 7 };
+  let mouse = { x: 0.5, y: 0.5, active: false };
+  let lastFrame = 0;
+  const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
 
   function measureGrid() {
     const rect = el.getBoundingClientRect();
     if (rect.width < 16 || rect.height < 16) {
-      el.style.fontSize = "7px";
+      el.style.fontSize = "6px";
       return;
     }
 
+    const isMobile = Math.min(rect.width, rect.height) < 420 || rect.width < 520;
     const charAspect = 0.62;
-    const target = 52;
+    // Lower target density on mobile for performance + legibility
+    const target = isMobile ? 32 : 48;
     const fontByW = rect.width / (target * charAspect);
     const fontByH = rect.height / target;
-    const fontSize = Math.max(5, Math.min(fontByW, fontByH));
-    const cols = Math.max(28, Math.floor(rect.width / (fontSize * charAspect)));
-    const rows = Math.max(28, Math.floor(rect.height / fontSize));
+    let fontSize = Math.max(isMobile ? 4.5 : 5, Math.min(fontByW, fontByH));
+    // Cap very dense grids
+    const cols = Math.max(22, Math.min(isMobile ? 38 : 52, Math.floor(rect.width / (fontSize * charAspect))));
+    const rows = Math.max(22, Math.min(isMobile ? 36 : 48, Math.floor(rect.height / fontSize)));
+
+    // Slightly larger font on tiny screens for readability
+    if (rect.width < 340) fontSize = Math.max(fontSize, 5.5);
 
     grid = { cols, rows, fontSize };
     el.style.fontSize = `${fontSize}px`;
@@ -54,17 +65,17 @@
     const r = Math.hypot(nx, ny);
     const a = Math.atan2(ny, nx);
     const pulse = Math.sin((t / LOOP_MS) * Math.PI * 2) * 0.5 + 0.5;
-    const ring = Math.sin(r * 12 - t * 0.0014);
-    const spoke = Math.cos(a * segments + r * 5 + t * 0.0011);
-    const weave = Math.sin(a * 3 + r * 9 - t * 0.0009);
-    const tribal = Math.abs(Math.sin(a * (segments / 2) * 2 + r * 7));
+    const ring = Math.sin(r * 13 - t * 0.00155);
+    const spoke = Math.cos(a * segments + r * 4.6 + t * 0.00125);
+    const weave = Math.sin(a * 3.2 + r * 9.5 - t * 0.00095);
+    const tribal = Math.abs(Math.sin(a * (segments / 2) * 2 + r * 6.8));
     let v =
-      0.42 +
-      0.22 * ring +
-      0.18 * spoke +
-      0.12 * weave +
-      0.08 * tribal +
-      pulse * 0.06 * Math.sin(r * 18 - t * 0.0018);
+      0.40 +
+      0.23 * ring +
+      0.19 * spoke +
+      0.115 * weave +
+      0.09 * tribal +
+      pulse * 0.065 * Math.sin(r * 19 - t * 0.00195);
     return Math.min(1, Math.max(0, v));
   }
 
@@ -88,7 +99,8 @@
   }
 
   function colorFor(lum, segIdx) {
-    return hsvToRgb(168 + lum * 28 + segIdx * 4, 0.42 + lum * 0.4, 0.38 + lum * 0.58);
+    const hue = 166 + lum * 32 + segIdx * 3.5;
+    return hsvToRgb(hue, 0.44 + lum * 0.38, 0.36 + lum * 0.62);
   }
 
   function renderFrame(now) {
@@ -96,10 +108,12 @@
     const { cols, rows } = grid;
     const segments = 8;
     const t = (now - loopStart) % LOOP_MS;
-    const rotationRad = (t / LOOP_MS) * Math.PI * 2;
+    const mx = mouse.active ? (mouse.x - 0.5) * 1.15 : 0;
+    const my = mouse.active ? (mouse.y - 0.5) * 0.7 : 0;
+    const rotationRad = (t / LOOP_MS) * Math.PI * 2 + mx * 0.9;
     const pulse = Math.sin((t / LOOP_MS) * Math.PI * 2 * 2) * 0.5 + 0.5;
-    const contrast = 1.08 + pulse * 0.18;
-    const brightness = -0.04 + pulse * 0.05;
+    const contrast = 1.06 + pulse * 0.22 + Math.abs(mx) * 0.12;
+    const brightness = -0.03 + pulse * 0.06 + my * 0.07;
 
     const cx = cols / 2;
     const cy = rows / 2;
@@ -122,8 +136,41 @@
     }
 
     el.innerHTML = html;
-    requestAnimationFrame(renderFrame);
+    lastFrame = now;
+
+    // Throttle a bit on touch devices for smoother scroll + battery
+    const targetInterval = isCoarsePointer ? 55 : 16;
+    const nextDelay = Math.max(0, targetInterval - (performance.now() - now));
+    if (nextDelay > 8) {
+      setTimeout(() => requestAnimationFrame(renderFrame), nextDelay);
+    } else {
+      requestAnimationFrame(renderFrame);
+    }
   }
+
+  // Mouse / pointer interaction for motion design
+  function updateMouse(e) {
+    const rect = visual.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+    mouse.x = x;
+    mouse.y = y;
+    mouse.active = true;
+  }
+
+  function resetMouse() {
+    mouse.active = false;
+    // gently return toward center over time via render
+  }
+
+  visual.addEventListener('mousemove', updateMouse, { passive: true });
+  visual.addEventListener('mouseenter', () => { mouse.active = true; }, { passive: true });
+  visual.addEventListener('mouseleave', resetMouse, { passive: true });
+  // Touch support for mobile/tablet interaction
+  visual.addEventListener('touchmove', (e) => {
+    if (e.touches[0]) updateMouse(e.touches[0]);
+  }, { passive: true });
+  visual.addEventListener('touchend', resetMouse, { passive: true });
 
   const onResize = () => measureGrid();
   window.addEventListener("resize", onResize);
