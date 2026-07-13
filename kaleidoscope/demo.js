@@ -2,14 +2,15 @@ import { paletteColor } from "./palette.js";
 
 const CHARSET = "@#S&%*+=-:. ";
 const DEFAULT_LOOP_MS = 22000;
-const SAMPLES_BASE =
-  "https://raw.githubusercontent.com/reeldemo/reeldemo-kaleidoscope/main/landing/samples";
+const SAMPLES_BASE = "./samples";
 
 const SAMPLES = [
-  { id: "neon-city", label: "Neon", segments: 8, rotation: 0 },
-  { id: "tribal-pattern", label: "Tribal", segments: 12, rotation: 30 },
-  { id: "vinyl", label: "Vinyl", segments: 4, rotation: 45 },
-  { id: "abstract", label: "Abstract", segments: 10, rotation: 60 },
+  { id: "neon-city", label: "Neon", segments: 8, rotation: 0, colorScheme: "neon", seedHue: 0 },
+  { id: "tribal-pattern", label: "Tribal", segments: 12, rotation: 30, colorScheme: "ember", seedHue: 12 },
+  { id: "vinyl", label: "Vinyl", segments: 4, rotation: 45, colorScheme: "vinyl", seedHue: 30 },
+  { id: "abstract", label: "Abstract", segments: 10, rotation: 60, colorScheme: "neon", seedHue: 45 },
+  { id: "portrait", label: "Portrait", segments: 6, rotation: 15, colorScheme: "majico", seedHue: 0 },
+  { id: "concert", label: "Concert", segments: 8, rotation: 22, colorScheme: "ember", seedHue: 20 },
 ];
 
 const els = {
@@ -26,6 +27,7 @@ const els = {
   speed: document.getElementById("ka-speed"),
   invert: document.getElementById("ka-invert"),
   geometry: document.getElementById("ka-geometry"),
+  harmonicsGroup: document.getElementById("ka-harmonics-group"),
   harmonicsL: document.getElementById("ka-harmonics-l"),
   harmonicsM: document.getElementById("ka-harmonics-m"),
   colorScheme: document.getElementById("ka-color-scheme"),
@@ -356,6 +358,23 @@ function updateLabels() {
   }
 }
 
+function updateModeUI() {
+  const showHarmonics = state.mode === "harmonics";
+  if (els.harmonicsGroup) {
+    els.harmonicsGroup.hidden = !showHarmonics;
+  }
+  if (els.harmonicsL) els.harmonicsL.disabled = !showHarmonics;
+  if (els.harmonicsM) els.harmonicsM.disabled = !showHarmonics;
+}
+
+function applySampleSettings(sample) {
+  if (!sample) return;
+  if (sample.segments != null) els.segments.value = sample.segments;
+  if (sample.rotation != null) els.rotation.value = sample.rotation;
+  if (sample.colorScheme && els.colorScheme) els.colorScheme.value = sample.colorScheme;
+  if (sample.seedHue != null && els.seedHue) els.seedHue.value = sample.seedHue;
+}
+
 function drawFrame() {
   try {
     const grid = computeGrid();
@@ -442,34 +461,46 @@ async function loadImage(src) {
       state.imageSrc = src;
       resolve(img);
     };
-    img.onerror = reject;
+    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
     img.src = src;
   });
+}
+
+function setActivePick({ mode, sampleId }) {
+  document.querySelectorAll(".ka-sample-picks button").forEach((b) => b.classList.remove("active"));
+  if (mode) {
+    document.querySelector(`.ka-sample-picks button[data-mode="${mode}"]`)?.classList.add("active");
+  } else if (sampleId) {
+    document.querySelector(`.ka-sample-picks button[data-sample="${sampleId}"]`)?.classList.add("active");
+  }
 }
 
 async function setPatternMode(mode) {
   state.mode = mode;
   state.image = null;
   state.imageSrc = null;
-  document.querySelectorAll(".ka-sample-picks button").forEach((b) => b.classList.remove("active"));
-  document.querySelector(`.ka-sample-picks button[data-mode="${mode}"]`)?.classList.add("active");
+  setActivePick({ mode });
+  updateModeUI();
   resetLoop();
   drawFrame();
 }
 
 async function setImageSource(src, sample) {
-  state.mode = "image";
-  state.image = null;
-  state.imageSrc = null;
-  document.querySelectorAll(".ka-sample-picks button").forEach((b) => b.classList.remove("active"));
-  document.querySelector(`.ka-sample-picks button[data-sample="${sample?.id || ""}"]`)?.classList.add("active");
-  await loadImage(src);
-  if (sample) {
-    els.segments.value = sample.segments;
-    els.rotation.value = sample.rotation;
+  try {
+    state.mode = "image";
+    state.image = null;
+    state.imageSrc = null;
+    setActivePick({ sampleId: sample?.id || "" });
+    await loadImage(src);
+    applySampleSettings(sample);
+    updateModeUI();
+    els.status.textContent = state.playing ? "● live loop" : "○ paused";
+    resetLoop();
+    drawFrame();
+  } catch (err) {
+    console.error(err);
+    els.status.textContent = "✕ sample load failed";
   }
-  resetLoop();
-  drawFrame();
 }
 
 function bindControls() {
@@ -496,7 +527,12 @@ function bindControls() {
   els.file.addEventListener("change", async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    await setImageSource(URL.createObjectURL(file));
+    try {
+      await setImageSource(URL.createObjectURL(file));
+    } catch (err) {
+      console.error(err);
+      els.status.textContent = "✕ upload failed";
+    }
   });
 
   let resizeTimer;
@@ -514,7 +550,7 @@ function bindControls() {
 function buildSamplePicks() {
   const modes = [
     { id: "procedural", label: "Pattern" },
-    { id: "harmonics", label: "Harmonics" },
+    { id: "harmonics", label: "Spherical harmonics" },
   ];
   modes.forEach((mode) => {
     const btn = document.createElement("button");
@@ -541,6 +577,7 @@ function buildSamplePicks() {
 function init() {
   bindControls();
   buildSamplePicks();
+  updateModeUI();
   updateLabels();
   els.status.textContent = "● live loop";
   drawFrame();

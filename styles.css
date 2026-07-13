@@ -792,9 +792,11 @@ pre code,
 /* Kaleidoscope live demo */
 .ka-demo {
   display: grid;
-  grid-template-columns: minmax(220px, 280px) 1fr;
+  grid-template-columns: minmax(200px, 260px) 1fr;
   gap: 0;
-  min-height: min(72vh, 640px);
+  height: min(58vh, 520px);
+  min-height: 420px;
+  max-height: min(72vh, 600px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -803,13 +805,14 @@ pre code,
 }
 
 .ka-demo-controls {
-  padding: var(--space-md);
+  padding: 0.75rem;
   background: var(--surface);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.2rem;
   overflow-y: auto;
+  max-height: 100%;
 }
 
 .ka-demo-controls h2 {
@@ -834,9 +837,13 @@ pre code,
 .ka-slider {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.78rem;
-  margin-bottom: 0.45rem;
+  gap: 0.15rem;
+  font-size: 0.74rem;
+  margin-bottom: 0.25rem;
+}
+
+.ka-harmonics-group[hidden] {
+  display: none;
 }
 
 .ka-slider span {
@@ -935,7 +942,7 @@ pre code,
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 320px;
+  min-height: 0;
   background: radial-gradient(ellipse at center, rgba(63, 89, 91, 0.12), var(--bg) 72%);
   overflow: hidden;
 }
@@ -944,7 +951,7 @@ pre code,
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 280px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

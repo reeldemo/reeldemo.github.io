@@ -107,14 +107,16 @@
               <option value="circle">circle (inscribed)</option>
             </select>
           </label>
-          <label class="ka-slider">
-            <span>harmonics l <output id="ka-harmonics-l-val">3</output></span>
-            <input type="range" id="ka-harmonics-l" min="0" max="4" value="3" step="1" />
-          </label>
-          <label class="ka-slider">
-            <span>harmonics m <output id="ka-harmonics-m-val">2</output></span>
-            <input type="range" id="ka-harmonics-m" min="-4" max="4" value="2" step="1" />
-          </label>
+          <div class="ka-harmonics-group" id="ka-harmonics-group" hidden>
+            <label class="ka-slider">
+              <span>harmonics l <output id="ka-harmonics-l-val">3</output></span>
+              <input type="range" id="ka-harmonics-l" min="0" max="4" value="3" step="1" disabled />
+            </label>
+            <label class="ka-slider">
+              <span>harmonics m <output id="ka-harmonics-m-val">2</output></span>
+              <input type="range" id="ka-harmonics-m" min="-4" max="4" value="2" step="1" disabled />
+            </label>
+          </div>
           <label class="ka-slider">
             <span>color scheme</span>
             <select id="ka-color-scheme">
