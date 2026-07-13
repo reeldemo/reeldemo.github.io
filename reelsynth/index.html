@@ -108,8 +108,29 @@
       </div>
     </section>
 
+    <section class="section" id="plugin-waitlist">
+      <p class="section-label">Plugin waitlist</p>
+      <div class="section-head">
+        <h2>Get notified when the DAW plugin ships</h2>
+        <p class="section-intro">
+          ReelSynth standalone works today. CLAP/VST3/AU is in development — join the waitlist for early access builds.
+        </p>
+      </div>
+      <form id="waitlist-form" class="detail-grid" style="max-width: 32rem;">
+        <label>
+          Email
+          <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+        </label>
+        <label>
+          DAW (optional)
+          <input type="text" name="daw" autocomplete="off" placeholder="Ableton, Reaper, FL Studio…" />
+        </label>
+        <button type="submit" class="btn primary">Join waitlist</button>
+        <p id="waitlist-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
     <section class="section">
-      <p class="section-label">Specs</p>
       <h2>Formats and APIs</h2>
       <ul class="spec-list" aria-label="Formats and APIs">
         <li><strong>Formats</strong> <span><code>.reelwt</code> banks and <code>.reelpreset</code> JSON patches</span></li>
@@ -138,5 +159,51 @@
   </div>
 
   <script src="../shared.js"></script>
+  <script>
+    (function () {
+      var SUPABASE_URL = "https://supabase.reeldemo.io";
+      var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjIwMDAwMDAwMDAsImlhdCI6MCwiaXNzIjoic3VwYWJhc2UiLCJyb2xlIjoiYW5vbiJ9.xOErZmPb_tPco7QXT55pzPBE7ce36f9dkfZGEIf3Xb8";
+      var form = document.getElementById("waitlist-form");
+      var status = document.getElementById("waitlist-status");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        status.textContent = "Submitting…";
+        var fd = new FormData(form);
+        var body = {
+          email: String(fd.get("email") || "").trim(),
+          product: "reelsynth_plugin",
+          source: "reeldemo.github.io/reelsynth",
+          utm: { page: location.pathname }
+        };
+        var daw = String(fd.get("daw") || "").trim();
+        if (daw) body.daw = daw;
+        fetch(SUPABASE_URL + "/rest/v1/plugin_waitlist", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: "Bearer " + SUPABASE_ANON_KEY,
+            Prefer: "return=minimal"
+          },
+          body: JSON.stringify(body)
+        }).then(function (res) {
+          if (res.status === 201 || res.status === 204) {
+            status.textContent = "You're on the list. We'll email when the plugin beta is ready.";
+            form.reset();
+            return;
+          }
+          if (res.status === 409) {
+            status.textContent = "That email is already on the waitlist.";
+            return;
+          }
+          return res.text().then(function (t) { throw new Error(t || ("HTTP " + res.status)); });
+        }).catch(function (err) {
+          status.textContent = "Could not join waitlist. Try again later.";
+          console.error(err);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
