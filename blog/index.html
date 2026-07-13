@@ -17,18 +17,22 @@
         <span class="logo-mark" aria-hidden="true"></span>
         Reeldemo
       </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
       <nav class="nav" aria-label="Primary">
-        <a href="/" data-nav>Home</a>
-        <a href="/studio/" data-nav>Studio</a>
-        <a href="/reelsynth/" data-nav>ReelSynth</a>
-        <a href="/kaleidoscope/" data-nav>Kaleidoscope</a>
-        <a href="/blog/" data-nav>Blog</a>
+        <a href="/#products" data-nav="/">Products</a>
+        <a href="/studio/" data-nav="/studio">Studio</a>
+        <a href="/reelsynth/" data-nav="/reelsynth">ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
+        <a href="/blog/" data-nav="/blog">Blog</a>
         <a href="https://github.com/reeldemo">GitHub</a>
+        <a class="nav-cta" href="/studio/">Open Studio</a>
       </nav>
     </header>
 
-    <section class="page-hero">
-      <p class="breadcrumb"><a href="/">Home</a> / Blog</p>
+    <section class="page-hero grid-bg">
+      <p class="breadcrumb"><a href="/">Home</a> · Blog</p>
       <p class="eyebrow">Production notes</p>
       <h1>Blog</h1>
       <p class="lede">
@@ -43,7 +47,7 @@
     </section>
 
     <footer class="site-footer">
-      <span>© Reeldemo</span>
+      <span>© <span id="footer-year">2026</span> Reeldemo</span>
       <span>
         <a href="https://github.com/reeldemo">github.com/reeldemo</a>
       </span>

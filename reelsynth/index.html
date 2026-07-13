@@ -6,6 +6,10 @@
   <title>ReelSynth · Wavetable synthesizer instrument</title>
   <meta name="description" content="ReelSynth is an open-source wavetable synthesizer instrument (MIT). Import Vital and Serum tables, route modulation, render offline, and shape sound with inspectable DSP." />
   <meta name="theme-color" content="#3f595b" />
+  <meta property="og:title" content="ReelSynth · Wavetable synthesizer" />
+  <meta property="og:description" content="Open-source wavetable synthesizer instrument — MIT licensed." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://reeldemo.github.io/reelsynth/" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -17,16 +21,23 @@
         <span class="logo-mark" aria-hidden="true"></span>
         Reeldemo
       </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
       <nav class="nav" aria-label="Primary">
         <a href="/#products" data-nav="/">Products</a>
+        <a href="/studio/" data-nav="/studio">Studio</a>
+        <a href="/reelsynth/" data-nav="/reelsynth">ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
         <a href="/blog/" data-nav="/blog">Blog</a>
         <a href="https://github.com/reeldemo/reelsynth">GitHub</a>
+        <a class="nav-cta" href="https://github.com/reeldemo/reelsynth">View source</a>
       </nav>
     </header>
 
-    <section class="page-hero">
+    <section class="page-hero grid-bg">
       <p class="breadcrumb"><a href="/">Home</a> · Instrument</p>
-      <p class="eyebrow">Synthesizer · Wavetable · MIT</p>
+      <div class="hero-badge"><span class="dot" aria-hidden="true"></span> Synthesizer · Wavetable · MIT</div>
       <h1>ReelSynth — wavetable synthesizer instrument</h1>
       <p class="lede">
         ReelSynth is an open-source <strong>synthesizer instrument</strong> built around wavetable DSP.
@@ -37,14 +48,28 @@
         <a class="btn primary" href="https://github.com/reeldemo/reelsynth">View on GitHub</a>
         <a class="btn ghost" href="/studio/">Used in Studio</a>
       </div>
+
+      <div class="signal-path" aria-label="Signal path">
+        <span class="signal-node">WavetableBank</span>
+        <span class="signal-arrow" aria-hidden="true">→</span>
+        <span class="signal-node">Oscillators</span>
+        <span class="signal-arrow" aria-hidden="true">→</span>
+        <span class="signal-node">Filter</span>
+        <span class="signal-arrow" aria-hidden="true">→</span>
+        <span class="signal-node">Mod matrix</span>
+        <span class="signal-arrow" aria-hidden="true">→</span>
+        <span class="signal-node">Output</span>
+      </div>
     </section>
 
     <section class="section">
-      <h2>Instrument architecture</h2>
-      <p class="section-intro">
-        A production-grade wavetable synthesizer — not a preset player. Every layer is addressable:
-        oscillators, filter, envelopes, and a modulation matrix you can inspect and automate.
-      </p>
+      <p class="section-label">Architecture</p>
+      <div class="section-head">
+        <h2>Instrument architecture</h2>
+        <p class="section-intro">
+          A production-grade wavetable synthesizer — not a preset player. Every layer is addressable.
+        </p>
+      </div>
       <div class="detail-grid">
         <div class="detail-block">
           <h3>WavetableBank</h3>
@@ -57,9 +82,33 @@
         <div class="detail-block">
           <h3>Import &amp; export</h3>
           <p>Vital <code>.vitaltable</code>, Serum <code>.fxp</code>, WAV cycles, Ableton param JSON, SFZ, MIDI, and <code>reelpack/</code> bundles.</p>
+          <div class="chip-row">
+            <span class="chip">.reelwt</span>
+            <span class="chip">.reelpreset</span>
+            <span class="chip">reelpack/</span>
+          </div>
         </div>
       </div>
+    </section>
 
+    <section class="section">
+      <div class="feature-row">
+        <div class="feature-copy">
+          <h3>Offline rendering for pipelines</h3>
+          <p>PyO3 bindings let Studio render notes headlessly — import a table, route modulation, export stems without opening a UI.</p>
+        </div>
+        <div class="feature-panel" aria-label="Render API">
+          <div class="fp-line"><span class="fp-key">python</span><span>PyO3 note rendering</span></div>
+          <div class="fp-line"><span class="fp-key">rust</span><span>Core DSP engine</span></div>
+          <div class="fp-line"><span class="fp-key">ui</span><span>Standalone patch explorer</span></div>
+          <div class="fp-line"><span class="fp-key">plugin</span><span>VST3/AU target in development</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-label">Specs</p>
+      <h2>Formats and APIs</h2>
       <ul class="spec-list" aria-label="Formats and APIs">
         <li><strong>Formats</strong> <span><code>.reelwt</code> banks and <code>.reelpreset</code> JSON patches</span></li>
         <li><strong>Python</strong> <span>PyO3 bindings for offline note rendering in production pipelines</span></li>
@@ -68,8 +117,16 @@
       </ul>
     </section>
 
+    <div class="cta-band">
+      <div>
+        <h2>Shape sound with inspectable DSP</h2>
+        <p>Clone the repo, import a wavetable, and route modulation through a voice engine you can read.</p>
+      </div>
+      <a class="btn primary" href="https://github.com/reeldemo/reelsynth">github.com/reeldemo/reelsynth</a>
+    </div>
+
     <footer class="site-footer">
-      <span>© Reeldemo · ReelSynth synthesizer instrument</span>
+      <span>© <span id="footer-year">2026</span> Reeldemo · ReelSynth synthesizer instrument</span>
       <span>
         <a href="/">reeldemo.github.io</a>
         ·

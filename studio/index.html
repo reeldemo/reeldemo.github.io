@@ -6,6 +6,10 @@
   <title>Reeldemo Studio · Agentic music studio</title>
   <meta name="description" content="Reeldemo Studio is an agentic music studio for compose, remix, and grade — with inspectable decisions and an editable Ableton handoff." />
   <meta name="theme-color" content="#3f595b" />
+  <meta property="og:title" content="Reeldemo Studio" />
+  <meta property="og:description" content="From reference and intent to an editable Ableton handoff." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://reeldemo.github.io/studio/" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
@@ -17,16 +21,23 @@
         <span class="logo-mark" aria-hidden="true"></span>
         Reeldemo
       </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
       <nav class="nav" aria-label="Primary">
         <a href="/#products" data-nav="/">Products</a>
+        <a href="/studio/" data-nav="/studio">Studio</a>
+        <a href="/reelsynth/" data-nav="/reelsynth">ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
         <a href="/blog/" data-nav="/blog">Blog</a>
         <a href="https://github.com/reeldemo/reeldemo-ableton">GitHub</a>
+        <a class="nav-cta" href="https://github.com/reeldemo/reeldemo-ableton">Repository</a>
       </nav>
     </header>
 
-    <section class="page-hero">
+    <section class="page-hero grid-bg">
       <p class="breadcrumb"><a href="/">Home</a> · Studio</p>
-      <p class="eyebrow">Agentic · Compose · Ableton</p>
+      <div class="hero-badge"><span class="dot" aria-hidden="true"></span> Agentic · Compose · Ableton</div>
       <h1>Reeldemo Studio</h1>
       <p class="lede">
         From reference and intent to an <em>editable Ableton handoff</em>. Chat-driven compose, remix, and grade
@@ -39,36 +50,89 @@
     </section>
 
     <section class="section">
-      <h2>What it does</h2>
-      <p class="section-intro">
-        Programmatic sound generation, hybrid instrument design, stem separation, and Ableton Live automation —
-        orchestrated by agents with contracts you can read and eval gates you can trust.
-      </p>
+      <p class="section-label">Capabilities</p>
+      <div class="section-head">
+        <h2>What it does</h2>
+        <p class="section-intro">
+          Programmatic sound generation, hybrid instrument design, stem separation, and Ableton automation —
+          orchestrated by agents with contracts you can read.
+        </p>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-copy">
+          <h3>Compose &amp; remix</h3>
+          <p>Oracle workflows for copy, remix, and create tasks. Dynamic instrument contracts and automated judges score outputs before handoff.</p>
+        </div>
+        <div class="feature-panel" aria-label="Oracle task types">
+          <div class="fp-line"><span class="fp-key">copy</span><span>Match reference groove and arrangement</span></div>
+          <div class="fp-line"><span class="fp-key">remix</span><span>Restructure stems with new direction</span></div>
+          <div class="fp-line"><span class="fp-key">create</span><span>Generate from intent and constraints</span></div>
+          <div class="fp-line"><span class="fp-key">grade</span><span>Rubric scoring and eval gates</span></div>
+        </div>
+      </div>
+
+      <div class="feature-row reverse">
+        <div class="feature-copy">
+          <h3>Ableton handoff</h3>
+          <p>AbletonOSC automation, M4L clip writers, drum rack loaders, and session material you can still edit in Live — not a frozen bounce.</p>
+        </div>
+        <div class="feature-panel" aria-label="Handoff surfaces">
+          <div class="fp-line"><span class="fp-key">OSC</span><span>Scene and clip automation</span></div>
+          <div class="fp-line"><span class="fp-key">M4L</span><span>Clip writers and rack loaders</span></div>
+          <div class="fp-line"><span class="fp-key">session</span><span>Editable tracks and MIDI</span></div>
+          <div class="fp-line"><span class="fp-key">export</span><span>Stems, packs, and trace logs</span></div>
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-copy">
+          <h3>ReelSynth integration</h3>
+          <p>Offline rendering through the open wavetable synthesizer instrument — import tables, render notes, export <code>reelpack/</code> bundles into production pipelines.</p>
+        </div>
+        <div class="feature-panel" aria-label="Synth pipeline">
+          <div class="fp-line"><span class="fp-key">import</span><span>.vitaltable · .fxp · WAV cycles</span></div>
+          <div class="fp-line"><span class="fp-key">render</span><span>PyO3 offline note rendering</span></div>
+          <div class="fp-line"><span class="fp-key">export</span><span>.reelpreset · SFZ · MIDI</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-label">Stack</p>
+      <h2>Under the hood</h2>
       <div class="detail-grid">
         <div class="detail-block">
-          <h3>Compose &amp; remix</h3>
-          <p>Oracle workflows for copy, remix, and create tasks with dynamic instrument contracts and automated judges.</p>
+          <h3>Oracle</h3>
+          <p>Copy / remix / create orchestration with JSON Schema contracts and traceable decision logs.</p>
         </div>
         <div class="detail-block">
-          <h3>Ableton handoff</h3>
-          <p>AbletonOSC automation, M4L clip writers, drum rack loaders, and session material you can still edit in Live.</p>
+          <h3>Stems</h3>
+          <p>Demucs separation into traceable layers for remix workflows and arrangement steering.</p>
         </div>
         <div class="detail-block">
-          <h3>ReelSynth integration</h3>
-          <p>Offline rendering through the open wavetable synthesizer instrument — import tables, render notes, export packs.</p>
+          <h3>Eval</h3>
+          <p>Automated checks and rubric scoring before handoff — creative state separate from system state.</p>
         </div>
       </div>
 
       <ul class="spec-list" aria-label="Stack highlights">
-        <li><strong>Oracle</strong> <span>Copy / remix / create orchestration with JSON Schema contracts</span></li>
-        <li><strong>Stems</strong> <span>Demucs separation into traceable layers for remix workflows</span></li>
         <li><strong>Licensing</strong> <span>14-day trial and paid keys with Supabase backend</span></li>
-        <li><strong>Eval</strong> <span>Automated checks and rubric scoring before handoff</span></li>
+        <li><strong>Luftbahn</strong> <span>Flagship demo universe — dark tribal-techno proving ground</span></li>
+        <li><strong>Chat</strong> <span>Control lane for directing the agent, not casual messaging</span></li>
       </ul>
     </section>
 
+    <div class="cta-band">
+      <div>
+        <h2>Reference in. Editable session out.</h2>
+        <p>Clone the repo, wire AbletonOSC, and start iterating with inspectable agent workflows.</p>
+      </div>
+      <a class="btn primary" href="https://github.com/reeldemo/reeldemo-ableton">github.com/reeldemo/reeldemo-ableton</a>
+    </div>
+
     <footer class="site-footer">
-      <span>© Reeldemo · Agentic music studio</span>
+      <span>© <span id="footer-year">2026</span> Reeldemo · Agentic music studio</span>
       <span>
         <a href="/">reeldemo.github.io</a>
         ·

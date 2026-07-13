@@ -1,3 +1,5 @@
+import { paletteColor } from "./palette.js";
+
 const CHARSET = "@#S&%*+=-:. ";
 const DEFAULT_LOOP_MS = 22000;
 const SAMPLES_BASE =
@@ -26,6 +28,9 @@ const els = {
   geometry: document.getElementById("ka-geometry"),
   harmonicsL: document.getElementById("ka-harmonics-l"),
   harmonicsM: document.getElementById("ka-harmonics-m"),
+  colorScheme: document.getElementById("ka-color-scheme"),
+  seedHue: document.getElementById("ka-seed-hue"),
+  seedColor: document.getElementById("ka-seed-color"),
   playBtn: document.getElementById("ka-play-btn"),
   status: document.getElementById("ka-demo-status"),
   samplePicks: document.getElementById("ka-sample-picks"),
@@ -36,6 +41,7 @@ const els = {
   brightnessVal: document.getElementById("ka-brightness-val"),
   pulseVal: document.getElementById("ka-pulse-val"),
   speedVal: document.getElementById("ka-speed-val"),
+  seedHueVal: document.getElementById("ka-seed-hue-val"),
 };
 
 const state = {
@@ -48,42 +54,22 @@ const state = {
   layoutReady: false,
 };
 
+function getPaletteOptions() {
+  const seedColor = els.seedColor?.value?.trim();
+  return {
+    colorScheme: els.colorScheme?.value || "majico",
+    seedHue: Number(els.seedHue?.value || 0),
+    seedColor: seedColor || undefined,
+  };
+}
+
 function loopMs() {
   const speed = Number(els.speed.value) / 100;
   return DEFAULT_LOOP_MS / Math.max(0.25, speed);
 }
 
-function hsvToRgb(h, s, v) {
-  const c = v * s;
-  const hp = h / 60;
-  const x = c * (1 - Math.abs((hp % 2) - 1));
-  let r = 0;
-  let g = 0;
-  let b = 0;
-  const sector = Math.floor(hp) % 6;
-  if (sector === 0) [r, g, b] = [c, x, 0];
-  else if (sector === 1) [r, g, b] = [x, c, 0];
-  else if (sector === 2) [r, g, b] = [0, c, x];
-  else if (sector === 3) [r, g, b] = [0, x, c];
-  else if (sector === 4) [r, g, b] = [x, 0, c];
-  else [r, g, b] = [c, 0, x];
-  const m = v - c;
-  return [
-    Math.round((r + m) * 255),
-    Math.round((g + m) * 255),
-    Math.round((b + m) * 255),
-  ];
-}
-
-function paletteColor(lum, segIdx, rotationDeg, imageMode) {
-  if (imageMode) {
-    return hsvToRgb(
-      (lum * 300 + 220 + rotationDeg * 0.15) % 360,
-      0.55 + lum * 0.35,
-      0.38 + lum * 0.58,
-    );
-  }
-  return hsvToRgb(168 + lum * 28 + segIdx * 4, 0.42 + lum * 0.4, 0.38 + lum * 0.58);
+function paletteColorLocal(lum, segIdx, rotationDeg, imageMode) {
+  return paletteColor(lum, segIdx, rotationDeg, imageMode, getPaletteOptions());
 }
 
 function luminance(r, g, b, contrast, brightness, invert) {
@@ -293,7 +279,7 @@ function renderFramePixels(pixels, width, height, opts) {
       );
       const ci = Math.round(lum * (CHARSET.length - 1));
       const ch = CHARSET[ci];
-      const [cr, cg, cb] = paletteColor(lum, 0, rotationDeg, true);
+      const [cr, cg, cb] = paletteColorLocal(lum, 0, rotationDeg, true);
       htmlRow += `<span class="ka-cell" style="color:rgb(${cr},${cg},${cb})">${ch}</span>`;
     }
     htmlRow += "</div>";
@@ -345,7 +331,7 @@ function renderPattern(opts) {
       if (invert) lum = 1 - lum;
       const ci = Math.round(lum * (CHARSET.length - 1));
       const ch = CHARSET[ci];
-      const [cr, cg, cb] = paletteColor(lum, folded.segIdx, rotationDeg, false);
+      const [cr, cg, cb] = paletteColorLocal(lum, folded.segIdx, rotationDeg, false);
       htmlRow += `<span class="ka-cell" style="color:rgb(${cr},${cg},${cb})">${ch}</span>`;
     }
     htmlRow += "</div>";
@@ -364,6 +350,9 @@ function updateLabels() {
   if (els.harmonicsL && els.harmonicsM) {
     document.getElementById("ka-harmonics-l-val").textContent = els.harmonicsL.value;
     document.getElementById("ka-harmonics-m-val").textContent = els.harmonicsM.value;
+  }
+  if (els.seedHueVal) {
+    els.seedHueVal.textContent = `${els.seedHue?.value || 0}°`;
   }
 }
 
@@ -486,12 +475,14 @@ async function setImageSource(src, sample) {
 function bindControls() {
   const onInput = () => drawFrame();
 
-  ["segments", "rotation", "cols", "contrast", "brightness", "pulse", "speed", "harmonics-l", "harmonics-m"].forEach((id) => {
+  ["segments", "rotation", "cols", "contrast", "brightness", "pulse", "speed", "harmonics-l", "harmonics-m", "seed-hue"].forEach((id) => {
     const key = id.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
     els[key]?.addEventListener("input", onInput);
   });
   els.invert.addEventListener("change", onInput);
   els.geometry.addEventListener("change", onInput);
+  els.colorScheme?.addEventListener("change", onInput);
+  els.seedColor?.addEventListener("input", onInput);
 
   els.playBtn.addEventListener("click", () => {
     state.playing = !state.playing;

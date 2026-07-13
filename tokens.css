@@ -5,13 +5,18 @@
   --bg-muted: #18181b;
   --surface: #18181b;
   --surface2: #141416;
+  --surface-elevated: #1f1f23;
   --border: #27272a;
+  --border-subtle: #1f1f23;
   --text: #fafafa;
   --text-muted: #a1a1aa;
+  --text-dim: #71717a;
   --accent: #3f595b;
   --accent-bright: #657577;
   --accent-glow: rgba(63, 89, 91, 0.45);
+  --accent-soft: rgba(63, 89, 91, 0.14);
   --accent-on: #fafafa;
+  --ember: rgba(232, 93, 79, 0.12);
   --font-heading: "Inter", system-ui, sans-serif;
   --font-body: "Lexend", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -21,9 +26,13 @@
   --space-lg: 32px;
   --space-xl: 48px;
   --space-2xl: 72px;
+  --space-3xl: 96px;
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  --shell-max: 1120px;
+  --header-h: 64px;
   --motion-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
   --motion-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-slow: 320ms cubic-bezier(0.4, 0, 0.2, 1);
 }
