@@ -18,7 +18,11 @@
         Reeldemo
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="#products">Products</a>
+        <a href="/#products" data-nav="/">Products</a>
+        <a href="/studio/" data-nav="/studio">Studio</a>
+        <a href="/reelsynth/" data-nav="/reelsynth">ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
+        <a href="/blog/" data-nav="/blog">Blog</a>
         <a href="https://github.com/reeldemo">GitHub</a>
       </nav>
     </header>
@@ -29,16 +33,17 @@
         <h1>Reference and intent, landed in an <em>editable handoff</em></h1>
         <p class="lede">
           Reeldemo is a dark studio stack for producers who need speed without surrendering control.
-          Compose, remix, and grade with inspectable agents. Sculpt sound in open DSP. Ship promos that match the room.
+          Compose, remix, and grade with inspectable agents. Sculpt sound with an open wavetable synthesizer instrument.
+          Ship promos that match the room.
         </p>
         <div class="cta-row">
-          <a class="btn primary" href="https://github.com/reeldemo/reeldemo-ableton">Open Studio</a>
+          <a class="btn primary" href="/studio/">Open Studio</a>
           <a class="btn ghost" href="#products">View the stack</a>
         </div>
         <div class="pill-row" aria-label="Capabilities">
           <span class="pill">Agentic compose</span>
           <span class="pill">Ableton handoff</span>
-          <span class="pill">Wavetable DSP</span>
+          <span class="pill">Wavetable synthesizer</span>
           <span class="pill">Kaleidoscope promos</span>
         </div>
       </div>
@@ -54,17 +59,17 @@
         get you from idea to session with material you can still shape under pressure.
       </p>
       <div class="product-grid">
-        <a class="card" href="https://github.com/reeldemo/reeldemo-ableton">
+        <a class="card" href="/studio/">
           <div class="card-tag">Studio</div>
           <h3>Reeldemo Studio</h3>
           <p>Agentic music studio for chat-driven compose, remix, and grade. Every decision inspectable before it hits Live.</p>
         </a>
-        <a class="card" href="https://github.com/reeldemo/reelsynth">
-          <div class="card-tag">Engine · MIT</div>
+        <a class="card" href="/reelsynth/">
+          <div class="card-tag">Instrument · MIT</div>
           <h3>ReelSynth</h3>
-          <p>Open wavetable engine for hands-on sound design. Import cycles, route modulation, render offline or play in the box.</p>
+          <p>Open wavetable synthesizer instrument for hands-on sound design. Import cycles, route modulation, render offline or play in the box.</p>
         </a>
-        <a class="card" href="https://github.com/reeldemo/reeldemo-kaleidoscope">
+        <a class="card" href="/kaleidoscope/">
           <div class="card-tag">Visuals</div>
           <h3>Kaleidoscope ASCII</h3>
           <p>Rust-fast mirror engine for promos and loops. Turn stills into hypnotic symmetry without leaving the terminal.</p>
@@ -83,5 +88,6 @@
   </div>
 
   <script src="hero-kaleidoscope.js"></script>
+  <script src="shared.js"></script>
 </body>
 </html>

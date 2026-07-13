@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReelSynth: Open Wavetable Synthesizer Instrument · Reeldemo Blog</title>
+  <meta name="description" content="ReelSynth is an open-source wavetable synthesizer instrument (MIT). Import Vital and Serum tables, route modulation, and keep every parameter editable." />
+  <meta name="theme-color" content="#3f595b" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="site-header">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Reeldemo
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" data-nav>Home</a>
+        <a href="/studio/" data-nav>Studio</a>
+        <a href="/reelsynth/" data-nav>ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav>Kaleidoscope</a>
+        <a href="/blog/" data-nav>Blog</a>
+        <a href="https://github.com/reeldemo">GitHub</a>
+      </nav>
+    </header>
+
+    <article class="section">
+      <p class="breadcrumb"><a href="/blog/">Blog</a> · Synthesizer</p>
+      <p class="blog-meta">2026-07-13 · Synthesizer</p>
+      <h1>ReelSynth: An Open Wavetable Synthesizer Instrument for Inspectable Sound Design</h1>
+      <div class="prose">
+        <p>Most production stacks treat synthesis as a black box: you pick a preset, tweak two macros, and hope the render survives the mix. <strong>ReelSynth</strong> is different — it is a <strong>wavetable synthesizer instrument</strong> with inspectable DSP, open formats, and a voice engine you can route, modulate, and export without losing authorship.</p>
+
+        <h2>Instrument, not plugin theater</h2>
+        <p>ReelSynth is classified as an <em>instrument</em> in the Reeldemo stack: a sound source you sculpt directly, not a utility that hides its math. Tri-osc wavetable voices, ADSR envelopes, state-variable filters, an eight-slot modulation matrix, and a reorderable FX rack are all addressable parameters — not marketing bullet points behind a locked UI.</p>
+        <p>The engine ships as MIT Rust with a Python wheel for offline rendering inside <a href="/studio/">Reeldemo Studio</a>. Standalone egui UI and a plugin shell are on the roadmap; the DSP and patch schema are production-ready today.</p>
+
+        <h2>Wavetables you can actually own</h2>
+        <p>Import Vital <code>.vitaltable</code> banks, WAV single-cycle folders, and Serum <code>.fxp</code> wavetable subsets. Export to Vital, WAV frames, Serum RSWT, Ableton param JSON, SFZ, MIDI, 24-bit audio, or a <code>reelpack/</code> bundle. Patches live in <code>.reelpreset</code> JSON; banks in <code>.reelwt</code> binary — both documented and versioned.</p>
+
+        <h2>Where it sits in the stack</h2>
+        <ul>
+          <li><a href="/studio/">Reeldemo Studio</a> — agentic compose and grade; ReelSynth renders offline stems and patches.</li>
+          <li><a href="/reelsynth/">ReelSynth</a> — hands-on wavetable synthesizer instrument for sound design.</li>
+          <li><a href="/kaleidoscope/">Kaleidoscope</a> — ASCII promos that match the dark studio aesthetic.</li>
+        </ul>
+        <p>If you need speed <em>and</em> editability under pressure, start with an instrument whose parameters survive the handoff — not a render-and-pray preset chain.</p>
+      </div>
+      <p class="section-intro" style="margin-top: 2rem;"><a href="/reelsynth/">Explore ReelSynth →</a></p>
+    </article>
+
+    <footer class="site-footer">
+      <span>© Reeldemo</span>
+      <span><a href="https://github.com/reeldemo/reeldemo">github.com/reeldemo</a></span>
+    </footer>
+  </div>
+
+  <script src="../../shared.js"></script>
+</body>
+</html>

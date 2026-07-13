@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog · Reeldemo</title>
+  <meta name="description" content="Notes on agentic music production, wavetable synthesis, and shipping editable Ableton handoffs." />
+  <meta name="theme-color" content="#3f595b" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="site-header">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Reeldemo
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" data-nav>Home</a>
+        <a href="/studio/" data-nav>Studio</a>
+        <a href="/reelsynth/" data-nav>ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav>Kaleidoscope</a>
+        <a href="/blog/" data-nav>Blog</a>
+        <a href="https://github.com/reeldemo">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="page-hero">
+      <p class="breadcrumb"><a href="/">Home</a> / Blog</p>
+      <p class="eyebrow">Production notes</p>
+      <h1>Blog</h1>
+      <p class="lede">
+        Essays on agentic music production, open DSP, and building tools producers can still edit under pressure.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="blog-list" id="blog-list">
+        <p class="section-intro">Loading posts…</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>© Reeldemo</span>
+      <span>
+        <a href="https://github.com/reeldemo">github.com/reeldemo</a>
+      </span>
+    </footer>
+  </div>
+
+  <script src="../shared.js"></script>
+  <script>
+    (function () {
+      const list = document.getElementById("blog-list");
+      fetch("./posts.json")
+        .then((r) => (r.ok ? r.json() : []))
+        .then((posts) => {
+          if (!posts.length) {
+            list.innerHTML = '<p class="section-intro">No posts yet. Check back soon.</p>';
+            return;
+          }
+          list.innerHTML = posts
+            .map(
+              (p) => `
+            <a class="blog-card" href="./${p.slug}/">
+              <div class="blog-meta">${p.date || ""} · ${p.pillar || "Reeldemo"}</div>
+              <h3>${p.title}</h3>
+              <p>${p.excerpt || ""}</p>
+            </a>`
+            )
+            .join("");
+        })
+        .catch(() => {
+          list.innerHTML = '<p class="section-intro">No posts yet. Check back soon.</p>';
+        });
+    })();
+  </script>
+</body>
+</html>

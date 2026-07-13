@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReelSynth · Wavetable synthesizer instrument</title>
+  <meta name="description" content="ReelSynth is an open-source wavetable synthesizer instrument (MIT). Import Vital and Serum tables, route modulation, render offline, and shape sound with inspectable DSP." />
+  <meta name="theme-color" content="#3f595b" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="site-header">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Reeldemo
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#products" data-nav="/">Products</a>
+        <a href="/blog/" data-nav="/blog">Blog</a>
+        <a href="https://github.com/reeldemo/reelsynth">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="page-hero">
+      <p class="breadcrumb"><a href="/">Home</a> · Instrument</p>
+      <p class="eyebrow">Synthesizer · Wavetable · MIT</p>
+      <h1>ReelSynth — wavetable synthesizer instrument</h1>
+      <p class="lede">
+        ReelSynth is an open-source <strong>synthesizer instrument</strong> built around wavetable DSP.
+        Import cycles from Vital, Serum, and WAV folders. Route modulation through a full voice engine.
+        Render offline for Reeldemo Studio or explore patches in the standalone UI.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/reeldemo/reelsynth">View on GitHub</a>
+        <a class="btn ghost" href="/studio/">Used in Studio</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Instrument architecture</h2>
+      <p class="section-intro">
+        A production-grade wavetable synthesizer — not a preset player. Every layer is addressable:
+        oscillators, filter, envelopes, and a modulation matrix you can inspect and automate.
+      </p>
+      <div class="detail-grid">
+        <div class="detail-block">
+          <h3>WavetableBank</h3>
+          <p>256 frames × 2048 samples with linear and spectral crossfade between positions.</p>
+        </div>
+        <div class="detail-block">
+          <h3>Voice engine</h3>
+          <p>Multi-oscillator wavetable synthesis, ADSR, state-variable filter, and modulation routing.</p>
+        </div>
+        <div class="detail-block">
+          <h3>Import &amp; export</h3>
+          <p>Vital <code>.vitaltable</code>, Serum <code>.fxp</code>, WAV cycles, Ableton param JSON, SFZ, MIDI, and <code>reelpack/</code> bundles.</p>
+        </div>
+      </div>
+
+      <ul class="spec-list" aria-label="Formats and APIs">
+        <li><strong>Formats</strong> <span><code>.reelwt</code> banks and <code>.reelpreset</code> JSON patches</span></li>
+        <li><strong>Python</strong> <span>PyO3 bindings for offline note rendering in production pipelines</span></li>
+        <li><strong>Plugin</strong> <span>VST3/AU target in development — instrument DSP ships first</span></li>
+        <li><strong>License</strong> <span>MIT — use the synthesizer in your own tools and sessions</span></li>
+      </ul>
+    </section>
+
+    <footer class="site-footer">
+      <span>© Reeldemo · ReelSynth synthesizer instrument</span>
+      <span>
+        <a href="/">reeldemo.github.io</a>
+        ·
+        <a href="https://github.com/reeldemo/reelsynth">github.com/reeldemo/reelsynth</a>
+      </span>
+    </footer>
+  </div>
+
+  <script src="../shared.js"></script>
+</body>
+</html>

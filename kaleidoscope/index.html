@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kaleidoscope ASCII · Promo visuals engine</title>
+  <meta name="description" content="Reeldemo Kaleidoscope is a Rust-fast mirror and ASCII art engine for promos, social ads, and landing visuals." />
+  <meta name="theme-color" content="#3f595b" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="site-header">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Reeldemo
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#products" data-nav="/">Products</a>
+        <a href="/blog/" data-nav="/blog">Blog</a>
+        <a href="https://github.com/reeldemo/reeldemo-kaleidoscope">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="page-hero">
+      <p class="breadcrumb"><a href="/">Home</a> · Visuals</p>
+      <p class="eyebrow">ASCII · Rust · Promos</p>
+      <h1>Kaleidoscope ASCII</h1>
+      <p class="lede">
+        Fast kaleidoscope mirror and ASCII art engine for Reeldemo promos, social ads, and landing visuals.
+        Sub-millisecond renders at terminal scale — the same engine powers the hero on this site.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/reeldemo/reeldemo-kaleidoscope">View on GitHub</a>
+        <a class="btn ghost" href="/">See live demo</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Engine</h2>
+      <p class="section-intro">
+        Parallel pixel sampling in Rust, exposed through npm native bindings and a CLI.
+        Turn stills into hypnotic symmetry without leaving the terminal.
+      </p>
+      <div class="detail-grid">
+        <div class="detail-block">
+          <h3>Rust core</h3>
+          <p>Parallel sampling with configurable segments, rotation, and palette mapping.</p>
+        </div>
+        <div class="detail-block">
+          <h3>npm package</h3>
+          <p><code>@reeldemo/kaleidoscope-ascii</code> with napi-rs bindings for Node and browser pipelines.</p>
+        </div>
+        <div class="detail-block">
+          <h3>CLI &amp; HTML</h3>
+          <p><code>kaleidoscope image.jpg --segments 8 --html</code> for one-shot promo assets.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>© Reeldemo · Kaleidoscope ASCII</span>
+      <span>
+        <a href="/">reeldemo.github.io</a>
+        ·
+        <a href="https://github.com/reeldemo/reeldemo-kaleidoscope">github.com/reeldemo/reeldemo-kaleidoscope</a>
+      </span>
+    </footer>
+  </div>
+
+  <script src="../shared.js"></script>
+</body>
+</html>
