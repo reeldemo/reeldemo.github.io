@@ -85,6 +85,21 @@
             <span>loop speed <output id="ka-speed-val">50%</output></span>
             <input type="range" id="ka-speed" min="25" max="200" value="50" step="5" />
           </label>
+          <label class="ka-slider">
+            <span>geometry</span>
+            <select id="ka-geometry">
+              <option value="square" selected>square (full grid)</option>
+              <option value="circle">circle (inscribed)</option>
+            </select>
+          </label>
+          <label class="ka-slider">
+            <span>harmonics l <output id="ka-harmonics-l-val">3</output></span>
+            <input type="range" id="ka-harmonics-l" min="0" max="4" value="3" step="1" />
+          </label>
+          <label class="ka-slider">
+            <span>harmonics m <output id="ka-harmonics-m-val">2</output></span>
+            <input type="range" id="ka-harmonics-m" min="-4" max="4" value="2" step="1" />
+          </label>
           <label class="ka-check">
             <input type="checkbox" id="ka-invert" />
             invert
@@ -93,14 +108,15 @@
           <button type="button" id="ka-play-btn" class="btn ghost">Pause loop</button>
 
           <p class="ka-demo-hint">
-            Maps to <code>RenderOptions</code> in Rust and
-            <code>npx kaleidoscope img.jpg --segments 8 --rotation 22 --contrast 1.2</code>.
+            Pattern modes map to <code>--pattern procedural|spherical-harmonics</code>,
+            <code>--harmonics &lt;l&gt; &lt;m&gt;</code>, and
+            <code>--geometry square|circle</code>.
           </p>
         </aside>
 
         <div class="ka-demo-output" id="ka-demo-output">
           <canvas id="ka-demo-canvas" hidden></canvas>
-          <pre id="ka-demo-ascii" class="ka-demo-ascii" aria-live="polite"></pre>
+          <div id="ka-demo-ascii" class="ka-demo-ascii" aria-live="polite"></div>
         </div>
       </div>
     </section>

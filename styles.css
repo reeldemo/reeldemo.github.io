@@ -191,7 +191,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.08), rgba(10, 10, 10, 0.22));
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.04), rgba(10, 10, 10, 0.14));
   pointer-events: none;
   z-index: 2;
 }
@@ -201,14 +201,16 @@ body {
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: stretch;
-  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
   font-family: var(--font-mono);
+  font-size: clamp(5px, 1.05vw, 8px);
   line-height: 1;
   letter-spacing: 0.02em;
   user-select: none;
   overflow: hidden;
+  padding: 0.35rem;
 }
 
 .ka-row {
@@ -556,6 +558,18 @@ body {
   cursor: pointer;
 }
 
+.ka-slider select {
+  width: 100%;
+  background: var(--bg-muted);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
 .ka-check {
   display: flex;
   align-items: center;
@@ -625,10 +639,16 @@ body {
 .ka-demo-ascii {
   margin: 0;
   padding: 0;
-  white-space: pre;
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
   letter-spacing: 0.04em;
   font-family: var(--font-mono);
+  font-size: clamp(5px, 0.9vw, 9px);
   user-select: none;
 }
 

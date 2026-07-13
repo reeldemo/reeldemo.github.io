@@ -10,13 +10,16 @@
 
   function measureGrid() {
     const rect = el.getBoundingClientRect();
-    if (rect.width < 8 || rect.height < 8) return;
+    if (rect.width < 16 || rect.height < 16) {
+      el.style.fontSize = "7px";
+      return;
+    }
 
     const charAspect = 0.62;
     const target = 52;
     const fontByW = rect.width / (target * charAspect);
     const fontByH = rect.height / target;
-    const fontSize = Math.max(4, Math.min(fontByW, fontByH));
+    const fontSize = Math.max(5, Math.min(fontByW, fontByH));
     const cols = Math.max(28, Math.floor(rect.width / (fontSize * charAspect)));
     const rows = Math.max(28, Math.floor(rect.height / fontSize));
 
@@ -67,7 +70,7 @@
 
   function foldCoords(nx, ny, rotationRad, segments) {
     const r = Math.hypot(nx, ny);
-    if (r < 0.001) return { x: 0, y: 0 };
+    if (r < 0.001) return { x: 0, y: 0, segIdx: 0 };
     let theta = Math.atan2(ny, nx) - rotationRad;
     while (theta < 0) theta += Math.PI * 2;
     while (theta >= Math.PI * 2) theta -= Math.PI * 2;
@@ -80,14 +83,12 @@
     return {
       x: Math.cos(folded) * r * scale,
       y: Math.sin(folded) * r * scale,
+      segIdx,
     };
   }
 
   function colorFor(lum, segIdx) {
-    const h = 168 + lum * 28 + segIdx * 4;
-    const s = 0.38 + lum * 0.42;
-    const v = 0.28 + lum * 0.62;
-    return hsvToRgb(h, s, v);
+    return hsvToRgb(168 + lum * 28 + segIdx * 4, 0.42 + lum * 0.4, 0.38 + lum * 0.58);
   }
 
   function renderFrame(now) {
@@ -95,14 +96,13 @@
     const { cols, rows } = grid;
     const segments = 8;
     const t = (now - loopStart) % LOOP_MS;
-    const rotationRad = ((t / LOOP_MS) * Math.PI * 2);
+    const rotationRad = (t / LOOP_MS) * Math.PI * 2;
     const pulse = Math.sin((t / LOOP_MS) * Math.PI * 2 * 2) * 0.5 + 0.5;
     const contrast = 1.08 + pulse * 0.18;
     const brightness = -0.04 + pulse * 0.05;
 
     const cx = cols / 2;
     const cy = rows / 2;
-    const segmentAngle = (Math.PI * 2) / segments;
     let html = "";
 
     for (let y = 0; y < rows; y++) {
@@ -115,10 +115,7 @@
         lum = Math.min(1, Math.max(0, (lum - 0.5) * contrast + 0.5 + brightness));
         const ci = Math.round(lum * (CHARSET.length - 1));
         const ch = CHARSET[ci];
-        let theta = Math.atan2(ny, nx) - rotationRad;
-        while (theta < 0) theta += Math.PI * 2;
-        const segIdx = Math.floor(theta / segmentAngle);
-        const [cr, cg, cb] = colorFor(lum, segIdx);
+        const [cr, cg, cb] = colorFor(lum, folded.segIdx);
         html += `<span class="ka-cell" style="color:rgb(${cr},${cg},${cb})">${ch}</span>`;
       }
       html += "</div>";
@@ -128,7 +125,12 @@
     requestAnimationFrame(renderFrame);
   }
 
-  window.addEventListener("resize", measureGrid);
+  const onResize = () => measureGrid();
+  window.addEventListener("resize", onResize);
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(onResize);
+    ro.observe(el);
+  }
   measureGrid();
   requestAnimationFrame(renderFrame);
 })();
