@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <script>document.documentElement.classList.add("is-loading");</script>
   <div class="grain" aria-hidden="true"></div>
 
   <div class="shell">
@@ -38,22 +39,22 @@
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
         <span class="accent">Reference in</span><span>·</span>
-        <span>Editable session out</span><span>·</span>
+        <span class="ember">Editable session out</span><span>·</span>
         <span class="accent">Compose</span><span>·</span>
         <span>Inspect</span><span>·</span>
-        <span class="accent">Push</span><span>·</span>
+        <span class="ember">Push</span><span>·</span>
         <span>Wavetable DSP</span><span>·</span>
         <span class="accent">Ableton OSC</span><span>·</span>
-        <span>Kaleidoscope promos</span><span>·</span>
+        <span class="ember">Kaleidoscope promos</span><span>·</span>
         <span class="accent">Luftbahn</span><span>·</span>
-        <span>Reference in</span><span>·</span>
-        <span>Editable session out</span><span>·</span>
+        <span class="accent">Reference in</span><span>·</span>
+        <span class="ember">Editable session out</span><span>·</span>
         <span class="accent">Compose</span><span>·</span>
         <span>Inspect</span><span>·</span>
-        <span class="accent">Push</span><span>·</span>
+        <span class="ember">Push</span><span>·</span>
         <span>Wavetable DSP</span><span>·</span>
         <span class="accent">Ableton OSC</span><span>·</span>
-        <span>Kaleidoscope promos</span><span>·</span>
+        <span class="ember">Kaleidoscope promos</span><span>·</span>
         <span class="accent">Luftbahn</span><span>·</span>
       </div>
     </div>
@@ -62,25 +63,25 @@
       <div class="hero-watermark" aria-hidden="true">REELDEMO</div>
       <div class="hero-wild-inner">
         <div class="hero-copy">
-          <p class="eyebrow">Agentic · Ableton-ready · Open DSP</p>
-          <h1>Compose, inspect, push into <em>Ableton</em></h1>
-          <p class="lede">
+          <p class="eyebrow" data-reveal>Agentic · Ableton-ready · Open DSP</p>
+          <h1 data-reveal>Compose, inspect, push into <em>Ableton</em></h1>
+          <p class="lede" data-reveal>
             A dark studio stack for producers who need speed without surrendering control.
             Chat-driven compose, remix, and grade with inspectable agents. Sculpt sound with open wavetable DSP.
             Ship promos that match the room.
           </p>
-          <div class="cta-row">
+          <div class="cta-row" data-reveal>
             <a class="btn primary" href="/studio/">Open Studio</a>
             <a class="btn ghost" href="#loop">See the loop</a>
           </div>
-          <div class="pill-row" aria-label="Capabilities">
+          <div class="pill-row" aria-label="Capabilities" data-reveal>
             <span class="pill">Reference in</span>
             <span class="pill">Editable session out</span>
             <span class="pill">Wavetable DSP</span>
             <span class="pill">Kaleidoscope promos</span>
           </div>
         </div>
-        <div class="hero-visual hero-visual--tilt" aria-hidden="true">
+        <div class="hero-visual hero-visual--tilt" data-reveal="scale" aria-hidden="true">
           <div class="kaleidoscope-stage" id="ascii-hero"></div>
         </div>
       </div>
@@ -89,49 +90,49 @@
     <section id="loop" class="section-wild">
       <span class="section-giant-num" aria-hidden="true">01</span>
       <p class="section-label">Production loop</p>
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2>Reference to session,<br />without losing the edit</h2>
         <p class="section-intro">
           Every surface shows where you are in the cycle — not a black box that spits out finished tracks.
         </p>
       </div>
       <div class="loop-zigzag" aria-label="Production workflow">
-        <div class="loop-zigzag-step loop-zigzag-step--left">
+        <div class="loop-zigzag-step loop-zigzag-step--left" data-reveal="left">
           <span class="loop-zigzag-num">01</span>
           <div>
             <h3>Reference</h3>
             <p>Bring in tracks, stems, or intent</p>
           </div>
         </div>
-        <div class="loop-zigzag-step loop-zigzag-step--right">
+        <div class="loop-zigzag-step loop-zigzag-step--right" data-reveal="right">
           <span class="loop-zigzag-num">02</span>
           <div>
             <h3>Prompt</h3>
             <p>Direct the agent in chat</p>
           </div>
         </div>
-        <div class="loop-zigzag-step loop-zigzag-step--left">
+        <div class="loop-zigzag-step loop-zigzag-step--left" data-reveal="left">
           <span class="loop-zigzag-num">03</span>
           <div>
             <h3>Generate</h3>
             <p>Compose, remix, or grade</p>
           </div>
         </div>
-        <div class="loop-zigzag-step loop-zigzag-step--right">
+        <div class="loop-zigzag-step loop-zigzag-step--right" data-reveal="right">
           <span class="loop-zigzag-num">04</span>
           <div>
             <h3>Inspect</h3>
             <p>Read contracts and eval gates</p>
           </div>
         </div>
-        <div class="loop-zigzag-step loop-zigzag-step--left">
+        <div class="loop-zigzag-step loop-zigzag-step--left" data-reveal="left">
           <span class="loop-zigzag-num">05</span>
           <div>
             <h3>Revise</h3>
             <p>Iterate without breaking momentum</p>
           </div>
         </div>
-        <div class="loop-zigzag-step loop-zigzag-step--right">
+        <div class="loop-zigzag-step loop-zigzag-step--right" data-reveal="right">
           <span class="loop-zigzag-num">06</span>
           <div>
             <h3>Hand off</h3>
@@ -144,14 +145,14 @@
     <section id="products" class="section-wild section-wild--dark">
       <span class="section-giant-num" aria-hidden="true">02</span>
       <p class="section-label">The stack</p>
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2>Three repos,<br />one mindset</h2>
         <p class="section-intro">
           Each tool stands alone. Together they compress the distance between idea and session.
         </p>
       </div>
       <div class="bento-grid">
-        <a class="card card--featured" href="/studio/">
+        <a class="card card--featured" href="/studio/" data-reveal="scale">
           <span class="card-giant-label" aria-hidden="true">STU</span>
           <div class="card-icon" aria-hidden="true">STU</div>
           <div class="card-tag">Studio</div>
@@ -159,7 +160,7 @@
           <p>Agentic music studio for chat-driven compose, remix, and grade. Oracle workflows with JSON contracts and automated judges before anything hits Live.</p>
           <div class="card-footer">Compose · Inspect · Push →</div>
         </a>
-        <a class="card" href="/reelsynth/">
+        <a class="card" href="/reelsynth/" data-reveal="scale">
           <span class="card-giant-label" aria-hidden="true">SYN</span>
           <div class="card-icon" aria-hidden="true">SYN</div>
           <div class="card-tag">Instrument · MIT</div>
@@ -167,7 +168,7 @@
           <p>Open wavetable synthesizer. Import Vital and Serum tables, route modulation, render offline.</p>
           <div class="card-footer">Wavetable DSP →</div>
         </a>
-        <a class="card" href="/kaleidoscope/#demo">
+        <a class="card" href="/kaleidoscope/#demo" data-reveal="scale">
           <span class="card-giant-label" aria-hidden="true">KAL</span>
           <div class="card-icon" aria-hidden="true">KAL</div>
           <div class="card-tag">Visuals</div>
@@ -179,7 +180,7 @@
     </section>
 
     <section class="section">
-      <div class="stat-strip stat-strip--wild" aria-label="Stack highlights">
+      <div class="stat-strip stat-strip--wild" data-reveal aria-label="Stack highlights">
         <div class="stat-item">
           <strong>3</strong>
           <span>Open-source repos</span>
@@ -198,7 +199,7 @@
         </div>
       </div>
 
-      <div class="luftbahn-callout">
+      <div class="luftbahn-callout" data-reveal>
         <h3>Luftbahn — proving ground inside Studio</h3>
         <p>
           Dark tribal-techno demo world that proves the agent can produce a coherent aesthetic, not generic outputs.
@@ -207,7 +208,7 @@
       </div>
     </section>
 
-    <div class="cta-band cta-band--wild">
+    <div class="cta-band cta-band--wild" data-reveal>
       <div>
         <h2>Agent, not black box</h2>
         <p>Fast iteration for real studio workflows — reference and intent to an editable Ableton handoff.</p>

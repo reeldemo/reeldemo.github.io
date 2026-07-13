@@ -12,12 +12,17 @@
   --text-muted: #a1a1aa;
   --text-dim: #71717a;
   --accent: #3f595b;
-  --accent-bright: #657577;
-  --accent-glow: rgba(63, 89, 91, 0.45);
-  --accent-soft: rgba(63, 89, 91, 0.14);
+  --accent-bright: #7aaeb1;
+  --accent-lit: #9fd4d8;
+  --accent-glow: rgba(122, 174, 177, 0.55);
+  --accent-soft: rgba(63, 89, 91, 0.22);
   --accent-on: #fafafa;
-  --ember: rgba(232, 93, 79, 0.12);
+  --ember: rgba(232, 93, 79, 0.18);
   --ember-hot: #e85d4f;
+  --ember-lit: #ff7a6b;
+  --ember-glow: rgba(232, 93, 79, 0.45);
+  --gradient-brand: linear-gradient(120deg, var(--accent-lit) 0%, var(--accent-bright) 38%, var(--ember-lit) 100%);
+  --gradient-surface: linear-gradient(145deg, rgba(122, 174, 177, 0.14), rgba(232, 93, 79, 0.08));
   --font-display: "Syne", system-ui, sans-serif;
   --font-heading: "Syne", system-ui, sans-serif;
   --font-body: "Outfit", system-ui, sans-serif;
@@ -38,5 +43,7 @@
   --motion-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
   --motion-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --motion-slow: 420ms cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-spring: 600ms cubic-bezier(0.22, 1.2, 0.36, 1);
   --slant: -4deg;
+  --loader-z: 9999;
 }
