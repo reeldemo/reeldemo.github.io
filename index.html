@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Reeldemo — AI + SaaS tools for music production</title>
-  <meta name="description" content="AI and SaaS tools for music production. Agentic studio stack — compose, sculpt, grade, and ship into Ableton with inspectable handoff." />
+  <title>Reeldemo · AI and SaaS for music production</title>
+  <meta name="description" content="Inspectable AI and SaaS tools for music production. Compose, sculpt, grade, and hand off into Ableton with a studio stack built for producers who ship." />
   <meta name="theme-color" content="#3f595b" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -25,54 +25,55 @@
 
     <section class="hero">
       <div>
-        <p class="eyebrow">AI + SaaS · Music production</p>
-        <h1>From reference and intent to an <em>editable handoff</em></h1>
+        <p class="eyebrow">AI · SaaS · Music production</p>
+        <h1>Reference and intent, landed in an <em>editable handoff</em></h1>
         <p class="lede">
-          Reeldemo is an agentic studio stack — compose, remix, grade, and push into Ableton.
-          Inspectable AI workflows, OSS synth engine, and promo visuals built for producers who ship.
+          Reeldemo is a dark studio stack for producers who need speed without surrendering control.
+          Compose, remix, and grade with inspectable agents. Sculpt sound in open DSP. Ship promos that match the room.
         </p>
         <div class="cta-row">
-          <a class="btn primary" href="https://github.com/reeldemo/reeldemo-ableton">Explore Studio</a>
-          <a class="btn ghost" href="#products">See the stack</a>
+          <a class="btn primary" href="https://github.com/reeldemo/reeldemo-ableton">Open Studio</a>
+          <a class="btn ghost" href="#products">View the stack</a>
         </div>
         <div class="pill-row" aria-label="Capabilities">
           <span class="pill">Agentic compose</span>
           <span class="pill">Ableton handoff</span>
           <span class="pill">Wavetable DSP</span>
-          <span class="pill">Promo visuals</span>
+          <span class="pill">Kaleidoscope promos</span>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
-        <div class="kaleidoscope-ring" id="ascii-hero"></div>
+        <div class="kaleidoscope-stage" id="ascii-hero"></div>
       </div>
     </section>
 
     <section id="products" class="section">
       <h2>The stack</h2>
       <p class="section-intro">
-        Three products, one dark-studio ecosystem. Each repo is independent — built for real production pressure, not passive listening.
+        Three repos. One production mindset. Each tool stands alone, but they share the same goal:
+        get you from idea to session with material you can still shape under pressure.
       </p>
       <div class="product-grid">
         <a class="card" href="https://github.com/reeldemo/reeldemo-ableton">
           <div class="card-tag">Studio</div>
           <h3>Reeldemo Studio</h3>
-          <p>Agentic music studio — compose, remix, grade, and push to Ableton with chat-driven iteration.</p>
+          <p>Agentic music studio for chat-driven compose, remix, and grade. Every decision inspectable before it hits Live.</p>
         </a>
         <a class="card" href="https://github.com/reeldemo/reelsynth">
           <div class="card-tag">Engine · MIT</div>
           <h3>ReelSynth</h3>
-          <p>Open-source wavetable synthesizer. Sculpt patches, route modulation, play in your DAW.</p>
+          <p>Open wavetable engine for hands-on sound design. Import cycles, route modulation, render offline or play in the box.</p>
         </a>
         <a class="card" href="https://github.com/reeldemo/reeldemo-kaleidoscope">
           <div class="card-tag">Visuals</div>
           <h3>Kaleidoscope ASCII</h3>
-          <p>Rust-fast kaleidoscope engine for promos, ads, and hypnotic dark-studio visuals.</p>
+          <p>Rust-fast mirror engine for promos and loops. Turn stills into hypnotic symmetry without leaving the terminal.</p>
         </a>
       </div>
     </section>
 
     <footer class="site-footer">
-      <span>© Reeldemo · AI + SaaS tools for music production</span>
+      <span>© Reeldemo · AI and SaaS tools for music production</span>
       <span>
         <a href="mailto:hello@reeldemo.dev">hello@reeldemo.dev</a>
         ·
@@ -81,34 +82,6 @@
     </footer>
   </div>
 
-  <script>
-    const chars = "·:;+=*#%@░▒▓█";
-    const lines = 14;
-    const cols = 28;
-    let frame = 0;
-
-    function renderAscii() {
-      const el = document.getElementById("ascii-hero");
-      if (!el) return;
-      let out = "";
-      for (let y = 0; y < lines; y++) {
-        for (let x = 0; x < cols; x++) {
-          const cx = x - cols / 2;
-          const cy = y - lines / 2;
-          const angle = Math.atan2(cy, cx) + frame * 0.04;
-          const dist = Math.sqrt(cx * cx + cy * cy);
-          const wave = Math.sin(angle * 6 + dist * 0.8 + frame * 0.12);
-          const idx = Math.floor(((wave + 1) / 2) * (chars.length - 1));
-          out += chars[idx];
-        }
-        out += "\n";
-      }
-      el.textContent = out;
-      frame++;
-      requestAnimationFrame(renderAscii);
-    }
-
-    renderAscii();
-  </script>
+  <script src="hero-kaleidoscope.js"></script>
 </body>
 </html>
