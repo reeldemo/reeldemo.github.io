@@ -1,0 +1,26 @@
+:root {
+  color-scheme: dark;
+  --bg: #0a0a0a;
+  --bg-muted: #18181b;
+  --surface: #18181b;
+  --surface2: #141416;
+  --border: #27272a;
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --accent: #3f595b;
+  --accent-bright: #657577;
+  --accent-glow: rgba(63, 89, 91, 0.45);
+  --accent-ember: #e85d4f;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-body: "Lexend", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 72px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}

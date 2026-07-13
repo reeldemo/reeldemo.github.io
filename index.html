@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reeldemo — AI + SaaS tools for music production</title>
+  <meta name="description" content="Agentic studio stack for producers. Compose, sculpt, grade, and ship into Ableton — with inspectable AI handoff, not black-box generation." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="site-header">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Reeldemo
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#products">Products</a>
+        <a href="https://github.com/reeldemo">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">AI + SaaS · Music production</p>
+        <h1>From reference and intent to an <em>editable handoff</em></h1>
+        <p class="lede">
+          Reeldemo is an agentic studio stack — compose, remix, grade, and push into Ableton.
+          Inspectable AI workflows, OSS synth engine, and promo visuals built for producers who ship.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://github.com/reeldemo/reeldemo-ableton">Explore Studio</a>
+          <a class="btn ghost" href="#products">See the stack</a>
+        </div>
+        <div class="pill-row" aria-label="Capabilities">
+          <span class="pill">Agentic compose</span>
+          <span class="pill">Ableton handoff</span>
+          <span class="pill">Wavetable DSP</span>
+          <span class="pill">Demo video SaaS</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="kaleidoscope-ring" id="ascii-hero"></div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <h2>The stack</h2>
+      <p class="section-intro">
+        Four products, one dark-studio ecosystem. Each repo is independent — built for real production pressure, not passive listening.
+      </p>
+      <div class="product-grid">
+        <a class="card" href="https://github.com/reeldemo/reeldemo-ableton">
+          <div class="card-tag">Studio</div>
+          <h3>Reeldemo Studio</h3>
+          <p>Agentic music studio — compose, remix, grade, and push to Ableton with chat-driven iteration.</p>
+        </a>
+        <a class="card" href="https://github.com/reeldemo/reelsynth">
+          <div class="card-tag">Engine · MIT</div>
+          <h3>ReelSynth</h3>
+          <p>Open-source wavetable synthesizer. Sculpt patches, route modulation, play in your DAW.</p>
+        </a>
+        <a class="card" href="https://github.com/reeldemo/reeldemo.io">
+          <div class="card-tag">SaaS</div>
+          <h3>Demo Video</h3>
+          <p>Automated demo videos from your repo. Plan, record, share — built for developer marketing.</p>
+        </a>
+        <a class="card" href="https://github.com/reeldemo/reeldemo-kaleidoscope">
+          <div class="card-tag">Visuals</div>
+          <h3>Kaleidoscope ASCII</h3>
+          <p>Rust-fast kaleidoscope engine for promos, ads, and hypnotic dark-studio visuals.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>© Reeldemo · AI + SaaS tools for music production</span>
+      <span>
+        <a href="mailto:hello@reeldemo.dev">hello@reeldemo.dev</a>
+        ·
+        <a href="https://github.com/reeldemo">github.com/reeldemo</a>
+      </span>
+    </footer>
+  </div>
+
+  <script>
+    const chars = "·:;+=*#%@░▒▓█";
+    const lines = 14;
+    const cols = 28;
+    let frame = 0;
+
+    function renderAscii() {
+      const el = document.getElementById("ascii-hero");
+      if (!el) return;
+      let out = "";
+      for (let y = 0; y < lines; y++) {
+        for (let x = 0; x < cols; x++) {
+          const cx = x - cols / 2;
+          const cy = y - lines / 2;
+          const angle = Math.atan2(cy, cx) + frame * 0.04;
+          const dist = Math.sqrt(cx * cx + cy * cy);
+          const wave = Math.sin(angle * 6 + dist * 0.8 + frame * 0.12);
+          const idx = Math.floor(((wave + 1) / 2) * (chars.length - 1));
+          out += chars[idx];
+        }
+        out += "\n";
+      }
+      el.textContent = out;
+      frame++;
+      requestAnimationFrame(renderAscii);
+    }
+
+    renderAscii();
+  </script>
+</body>
+</html>
