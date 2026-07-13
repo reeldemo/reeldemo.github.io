@@ -187,21 +187,11 @@ body {
     0 0 48px var(--accent-glow);
 }
 
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  inset: 12%;
-  border-radius: 50%;
-  border: 1px solid rgba(101, 117, 119, 0.25);
-  pointer-events: none;
-  z-index: 2;
-}
-
 .hero-visual::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, transparent 42%, rgba(10, 10, 10, 0.92) 78%);
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.08), rgba(10, 10, 10, 0.22));
   pointer-events: none;
   z-index: 2;
 }
@@ -211,15 +201,14 @@ body {
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
   z-index: 1;
   font-family: var(--font-mono);
-  font-size: clamp(5px, 1.05vw, 7.5px);
   line-height: 1;
   letter-spacing: 0.02em;
   user-select: none;
-  padding: 0.5rem;
+  overflow: hidden;
 }
 
 .ka-row {
@@ -497,4 +486,174 @@ body {
 
 .prose a {
   color: var(--accent-bright);
+}
+
+/* Kaleidoscope live demo */
+.ka-demo {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 0;
+  min-height: min(72vh, 640px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface2);
+  margin-top: var(--space-lg);
+}
+
+.ka-demo-controls {
+  padding: var(--space-md);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  overflow-y: auto;
+}
+
+.ka-demo-controls h2 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.ka-demo-status {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  margin-bottom: 0.5rem;
+}
+
+.ka-demo-status.paused {
+  color: var(--text-muted);
+}
+
+.ka-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  margin-bottom: 0.45rem;
+}
+
+.ka-slider span {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-muted);
+}
+
+.ka-slider output {
+  font-family: var(--font-mono);
+  color: var(--accent-bright);
+  font-size: 0.72rem;
+}
+
+.ka-slider input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.ka-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0.5rem;
+  cursor: pointer;
+}
+
+.ka-check input {
+  accent-color: var(--accent);
+}
+
+.ka-sample-picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0.6rem;
+}
+
+.ka-sample-picks button {
+  border: 1px solid var(--border);
+  background: var(--bg-muted);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.ka-sample-picks button:hover,
+.ka-sample-picks button.active {
+  border-color: var(--accent-bright);
+  color: var(--text);
+}
+
+.ka-file-drop {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-bottom: 0.35rem;
+  transition: border-color 160ms ease;
+}
+
+.ka-file-drop:hover {
+  border-color: var(--accent-bright);
+  color: var(--text);
+}
+
+.ka-demo-output {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  background: radial-gradient(ellipse at center, rgba(63, 89, 91, 0.12), var(--bg) 72%);
+  overflow: hidden;
+}
+
+.ka-demo-ascii {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  user-select: none;
+}
+
+.ka-demo-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: 0.75rem;
+  line-height: 1.45;
+}
+
+.ka-demo-hint code {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-bright);
+}
+
+@media (max-width: 820px) {
+  .ka-demo {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .ka-demo-controls {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
 }

@@ -30,11 +30,78 @@
       <h1>Kaleidoscope ASCII</h1>
       <p class="lede">
         Fast kaleidoscope mirror and ASCII art engine for Reeldemo promos, social ads, and landing visuals.
-        Sub-millisecond renders at terminal scale — the same engine powers the hero on this site.
+        Sub-millisecond renders at terminal scale. Try the flags below and watch the loop update live.
       </p>
       <div class="cta-row">
         <a class="btn primary" href="https://github.com/reeldemo/reeldemo-kaleidoscope">View on GitHub</a>
-        <a class="btn ghost" href="/">See live demo</a>
+        <a class="btn ghost" href="#demo">Live demo ↓</a>
+      </div>
+    </section>
+
+    <section id="demo" class="section">
+      <h2>Live demo</h2>
+      <p class="section-intro">
+        Same options as the Rust engine and CLI: segments, rotation, density, contrast, brightness, and invert.
+        Upload your own still or pick a stock sample. The loop runs slow by default so you can read the symmetry.
+      </p>
+
+      <div class="ka-demo">
+        <aside class="ka-demo-controls">
+          <h2>Render flags</h2>
+          <p id="ka-demo-status" class="ka-demo-status">● live loop</p>
+
+          <label class="ka-file-drop">
+            <input type="file" id="ka-demo-file" accept="image/*" hidden />
+            Drop image or click to upload
+          </label>
+
+          <div class="ka-sample-picks" id="ka-sample-picks"></div>
+
+          <label class="ka-slider">
+            <span>segments <output id="ka-segments-val">8</output></span>
+            <input type="range" id="ka-segments" min="3" max="16" value="8" step="1" />
+          </label>
+          <label class="ka-slider">
+            <span>rotation <output id="ka-rotation-val">0°</output></span>
+            <input type="range" id="ka-rotation" min="0" max="360" value="0" step="1" />
+          </label>
+          <label class="ka-slider">
+            <span>density <output id="ka-cols-val">auto</output></span>
+            <input type="range" id="ka-cols" min="0" max="100" value="65" step="1" />
+          </label>
+          <label class="ka-slider">
+            <span>contrast <output id="ka-contrast-val">1.18</output></span>
+            <input type="range" id="ka-contrast" min="50" max="200" value="118" step="1" />
+          </label>
+          <label class="ka-slider">
+            <span>brightness <output id="ka-brightness-val">-0.03</output></span>
+            <input type="range" id="ka-brightness" min="-30" max="30" value="-3" step="1" />
+          </label>
+          <label class="ka-slider">
+            <span>pulse <output id="ka-pulse-val">35%</output></span>
+            <input type="range" id="ka-pulse" min="0" max="100" value="35" step="1" />
+          </label>
+          <label class="ka-slider">
+            <span>loop speed <output id="ka-speed-val">50%</output></span>
+            <input type="range" id="ka-speed" min="25" max="200" value="50" step="5" />
+          </label>
+          <label class="ka-check">
+            <input type="checkbox" id="ka-invert" />
+            invert
+          </label>
+
+          <button type="button" id="ka-play-btn" class="btn ghost">Pause loop</button>
+
+          <p class="ka-demo-hint">
+            Maps to <code>RenderOptions</code> in Rust and
+            <code>npx kaleidoscope img.jpg --segments 8 --rotation 22 --contrast 1.2</code>.
+          </p>
+        </aside>
+
+        <div class="ka-demo-output" id="ka-demo-output">
+          <canvas id="ka-demo-canvas" hidden></canvas>
+          <pre id="ka-demo-ascii" class="ka-demo-ascii" aria-live="polite"></pre>
+        </div>
       </div>
     </section>
 
@@ -47,7 +114,7 @@
       <div class="detail-grid">
         <div class="detail-block">
           <h3>Rust core</h3>
-          <p>Parallel sampling with configurable segments, rotation, and palette mapping.</p>
+          <p>Parallel sampling with configurable segments, rotation, contrast, brightness, and invert.</p>
         </div>
         <div class="detail-block">
           <h3>npm package</h3>
@@ -71,5 +138,6 @@
   </div>
 
   <script src="../shared.js"></script>
+  <script src="demo.js"></script>
 </body>
 </html>
