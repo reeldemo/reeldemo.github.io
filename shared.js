@@ -157,5 +157,35 @@
   const year = document.getElementById("footer-year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  /* ── Smooth scroll for hash links ── */
+  function scrollToHash(hash, replace) {
+    if (!hash || hash === "#") return;
+    const id = hash.replace(/^#/, "");
+    const target = document.getElementById(id);
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: prefersReduced ? "auto" : "smooth",
+      block: "start",
+    });
+    if (replace) history.replaceState(null, "", "#" + id);
+    else history.pushState(null, "", "#" + id);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      const id = href.slice(1);
+      if (!id || !document.getElementById(id)) return;
+      e.preventDefault();
+      scrollToHash(href, false);
+    });
+  });
+
+  if (location.hash) {
+    window.requestAnimationFrame(() => {
+      scrollToHash(location.hash, true);
+    });
+  }
+
   initLoader();
 })();

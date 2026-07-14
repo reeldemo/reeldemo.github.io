@@ -32,7 +32,7 @@
         <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
         <a href="/blog/" data-nav="/blog">Blog</a>
         <a href="https://github.com/reeldemo/reeldemo-ableton">GitHub</a>
-        <a class="nav-cta" href="https://github.com/reeldemo/reeldemo-ableton">Repository</a>
+        <a class="nav-cta" href="#waitlist">Join waitlist</a>
       </nav>
     </header>
 
@@ -46,9 +46,10 @@
         with an oracle layer you can inspect before anything lands in Live. Built for producers who ship under pressure.
       </p>
       <div class="cta-row">
-        <a class="btn primary" href="https://github.com/reeldemo/reeldemo-ableton">Open repository</a>
-        <a class="btn ghost" href="/reelsynth/">ReelSynth instrument</a>
+        <a class="btn primary" href="#waitlist">Join waitlist for early access</a>
+        <a class="btn ghost" href="https://github.com/reeldemo/reeldemo-ableton">Open repository</a>
       </div>
+      <p style="margin-top: 0.5rem; opacity: 0.8;">Also featured on the <a href="/">main landing</a>.</p>
     </section>
 
     <section class="section">
@@ -124,12 +125,38 @@
       </ul>
     </section>
 
+    <section id="waitlist" class="section-wild">
+      <p class="section-label">Early access</p>
+      <div class="section-head">
+        <h2>Join the Studio waitlist</h2>
+        <p class="section-intro">
+          Chat-driven agentic studio with inspectable decisions and editable Ableton handoff.
+          Limited spots — get early access and shape the tool.
+        </p>
+      </div>
+      <form id="studio-waitlist-form" style="max-width: 36rem; display: grid; gap: 0.75rem;">
+        <label>
+          Email
+          <input type="email" name="email" required autocomplete="email" placeholder="you@studio.com" />
+        </label>
+        <label>
+          Focus (optional)
+          <input type="text" name="focus" autocomplete="off" placeholder="remix, sound design, full tracks…" />
+        </label>
+        <button type="submit" class="btn primary">Join waitlist</button>
+        <p id="studio-waitlist-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
     <div class="cta-band">
       <div>
         <h2>Reference in. Editable session out.</h2>
-        <p>Clone the repo, wire AbletonOSC, and start iterating with inspectable agent workflows.</p>
+        <p>Join the Studio waitlist for early access to chat-driven compose, remix, and grade with inspectable Ableton handoff.</p>
       </div>
-      <a class="btn primary" href="https://github.com/reeldemo/reeldemo-ableton">github.com/reeldemo/reeldemo-ableton</a>
+      <div class="cta-row">
+        <a class="btn primary" href="#waitlist">Join waitlist</a>
+        <a class="btn ghost" href="https://github.com/reeldemo/reeldemo-ableton">Open repository</a>
+      </div>
     </div>
 
     <footer class="site-footer">
@@ -143,5 +170,14 @@
   </div>
 
   <script src="../shared.js"></script>
+  <script src="../waitlist.js"></script>
+  <script>
+    initWaitlistForm({
+      formId: "studio-waitlist-form",
+      statusId: "studio-waitlist-status",
+      product: "studio",
+      touchpoint: "section",
+    });
+  </script>
 </body>
 </html>
