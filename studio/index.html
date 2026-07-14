@@ -135,17 +135,15 @@
         </p>
       </div>
       <form id="studio-waitlist-form" class="waitlist-form" novalidate>
-        <div class="waitlist-form__primary">
-          <div class="form-field">
-            <label class="form-label" for="studio-waitlist-email">Email</label>
-            <input class="form-input" id="studio-waitlist-email" type="email" name="email" required autocomplete="email" placeholder="you@studio.com" />
-          </div>
-          <button type="submit" class="btn primary">Join waitlist</button>
+        <div class="form-field">
+          <label class="form-label" for="studio-waitlist-email">Email</label>
+          <input class="form-input" id="studio-waitlist-email" type="email" name="email" required autocomplete="email" placeholder="you@studio.com" />
         </div>
         <div class="form-field">
           <label class="form-label" for="studio-waitlist-focus">Focus <span class="form-label-hint">optional</span></label>
           <input class="form-input" id="studio-waitlist-focus" type="text" name="focus" autocomplete="off" placeholder="remix, sound design, full tracks…" />
         </div>
+        <button type="submit" class="btn primary waitlist-form__submit">Join waitlist</button>
         <p id="studio-waitlist-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>

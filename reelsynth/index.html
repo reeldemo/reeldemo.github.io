@@ -116,18 +116,16 @@
           ReelSynth standalone works today. CLAP/VST3/AU is in development — join the waitlist for early access builds.
         </p>
       </div>
-      <form id="waitlist-form" class="waitlist-form waitlist-form--narrow" novalidate>
-        <div class="waitlist-form__primary">
-          <div class="form-field">
-            <label class="form-label" for="reelsynth-waitlist-email">Email</label>
-            <input class="form-input" id="reelsynth-waitlist-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
-          </div>
-          <button type="submit" class="btn primary">Join waitlist</button>
+      <form id="waitlist-form" class="waitlist-form" novalidate>
+        <div class="form-field">
+          <label class="form-label" for="reelsynth-waitlist-email">Email</label>
+          <input class="form-input" id="reelsynth-waitlist-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
         </div>
         <div class="form-field">
           <label class="form-label" for="reelsynth-waitlist-daw">DAW <span class="form-label-hint">optional</span></label>
           <input class="form-input" id="reelsynth-waitlist-daw" type="text" name="daw" autocomplete="off" placeholder="Ableton, Reaper, FL Studio…" />
         </div>
+        <button type="submit" class="btn primary waitlist-form__submit">Join waitlist</button>
         <p id="waitlist-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
