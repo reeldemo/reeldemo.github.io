@@ -134,17 +134,19 @@
           Limited spots — get early access and shape the tool.
         </p>
       </div>
-      <form id="studio-waitlist-form" style="max-width: 36rem; display: grid; gap: 0.75rem;">
-        <label>
-          Email
-          <input type="email" name="email" required autocomplete="email" placeholder="you@studio.com" />
-        </label>
-        <label>
-          Focus (optional)
-          <input type="text" name="focus" autocomplete="off" placeholder="remix, sound design, full tracks…" />
-        </label>
-        <button type="submit" class="btn primary">Join waitlist</button>
-        <p id="studio-waitlist-status" role="status" aria-live="polite"></p>
+      <form id="studio-waitlist-form" class="waitlist-form" novalidate>
+        <div class="waitlist-form__primary">
+          <div class="form-field">
+            <label class="form-label" for="studio-waitlist-email">Email</label>
+            <input class="form-input" id="studio-waitlist-email" type="email" name="email" required autocomplete="email" placeholder="you@studio.com" />
+          </div>
+          <button type="submit" class="btn primary">Join waitlist</button>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="studio-waitlist-focus">Focus <span class="form-label-hint">optional</span></label>
+          <input class="form-input" id="studio-waitlist-focus" type="text" name="focus" autocomplete="off" placeholder="remix, sound design, full tracks…" />
+        </div>
+        <p id="studio-waitlist-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
 
