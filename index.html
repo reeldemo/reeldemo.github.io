@@ -32,7 +32,7 @@
         <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
         <a href="/blog/" data-nav="/blog">Blog</a>
         <a href="https://github.com/reeldemo">GitHub</a>
-        <a class="nav-cta" href="/studio/#waitlist">Join waitlist</a>
+        <a class="nav-cta" href="#studio-waitlist">Join waitlist</a>
       </nav>
     </header>
 
@@ -70,7 +70,7 @@
             Ship promos that match the room. <strong>Studio early access waitlist is open now.</strong>
           </p>
           <div class="cta-row" data-reveal>
-            <a class="btn primary" href="/studio/#waitlist">Join Studio waitlist</a>
+            <a class="btn primary" href="#studio-waitlist">Join Studio waitlist</a>
             <a class="btn ghost" href="/studio/">Explore Studio</a>
             <a class="btn ghost" href="#loop">See the loop</a>
           </div>
@@ -90,7 +90,7 @@
       </div>
     </section>
 
-    <section class="section-wild">
+    <section id="studio-waitlist" class="section-wild">
       <p class="section-label">Early access</p>
       <div class="section-head" data-reveal>
         <h2>Join the Studio waitlist</h2>
@@ -99,10 +99,21 @@
           Limited spots — get early access and shape the tool.
         </p>
       </div>
-      <div class="cta-row" data-reveal>
-        <a class="btn primary" href="/studio/#waitlist">Join Studio waitlist</a>
-        <a class="btn ghost" href="/studio/">Explore Studio</a>
-      </div>
+      <form id="studio-waitlist-form" class="waitlist-form" novalidate>
+        <div class="form-field">
+          <label class="form-label" for="studio-waitlist-email">Email</label>
+          <input class="form-input" id="studio-waitlist-email" type="email" name="email" required autocomplete="email" placeholder="you@studio.com" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="studio-waitlist-focus">Focus <span class="form-label-hint">optional</span></label>
+          <input class="form-input" id="studio-waitlist-focus" type="text" name="focus" autocomplete="off" placeholder="remix, sound design, full tracks…" />
+        </div>
+        <button type="submit" class="btn primary waitlist-form__submit">Join waitlist</button>
+        <p id="studio-waitlist-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="form-footnote">
+        Already exploring? <a href="/studio/">Visit the Studio page</a> or check the <a href="https://github.com/reeldemo/reeldemo-ableton">repo</a>.
+      </p>
     </section>
 
     <section id="loop" class="section-wild">
@@ -226,7 +237,7 @@
         <p>Fast iteration for real studio workflows — reference and intent to an editable Ableton handoff. Studio waitlist is open for early access.</p>
       </div>
       <div class="cta-row">
-        <a class="btn primary" href="/studio/#waitlist">Join Studio waitlist</a>
+        <a class="btn primary" href="#studio-waitlist">Join Studio waitlist</a>
         <a class="btn ghost" href="/studio/">Explore Studio</a>
         <a class="btn ghost" href="https://github.com/reeldemo">GitHub</a>
       </div>
@@ -235,7 +246,6 @@
     <footer class="site-footer">
       <p class="footer-copy">© <span id="footer-year">2026</span> Reeldemo · AI and SaaS tools for music production</p>
       <div class="footer-links">
-        <a href="mailto:hello@reeldemo.dev">hello@reeldemo.dev</a>
         <a href="https://github.com/reeldemo">github.com/reeldemo</a>
       </div>
     </footer>
@@ -243,5 +253,14 @@
 
   <script src="hero-kaleidoscope.js"></script>
   <script src="shared.js"></script>
+  <script src="waitlist.js"></script>
+  <script>
+    initWaitlistForm({
+      formId: "studio-waitlist-form",
+      statusId: "studio-waitlist-status",
+      product: "studio",
+      touchpoint: "section",
+    });
+  </script>
 </body>
 </html>
