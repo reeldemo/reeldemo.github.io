@@ -1576,6 +1576,78 @@ pre code,
   color: var(--text-muted);
 }
 
+/* Platform download cards */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.download-card:hover {
+  transform: translate(-3px, -3px);
+  border-color: var(--accent-bright);
+  box-shadow: 6px 6px 0 var(--accent-soft);
+}
+
+.download-card__platform {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.download-card__arch {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.download-card__action {
+  margin-top: auto;
+  align-self: flex-start;
+  pointer-events: none;
+}
+
+.download-meta {
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface2);
+}
+
+.download-meta p {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.download-meta p:last-of-type {
+  margin-bottom: var(--space-sm);
+}
+
+.download-meta a {
+  color: var(--accent-lit);
+}
+
+.download-meta a:hover {
+  color: var(--ember-lit);
+}
+
 /* Use case grid */
 .use-grid {
   display: grid;
