@@ -19,11 +19,14 @@ From this repo (or any repo that ships the same `scripts/` wrappers):
 .\scripts\git-with-token.ps1 git push origin main
 .\scripts\git-with-token.ps1 gh pr list
 
-# Shortcuts
+# Shortcuts (pass remote/branch as usual)
 .\scripts\push.ps1 origin main
 .\scripts\pull.ps1 origin main
+
+# Override env file path (advanced)
+.\scripts\git-with-token.ps1 -EnvFile C:\path\to\.env.local git push origin main
 ```
 
-Other clones under `C:\Users\Julian\Documents\Programming\github\reeldemo\` include thin wrappers that call the shared `.env.local` path above.
+The **reelsynth** app clone at `C:\Users\Julian\Documents\Programming\github\reeldemo\reelsynth` includes thin wrappers that call the shared `.env.local` path above. The landing site lives only in this repo (`reeldemo.io`), not under `github\reeldemo\`.
 
 Auth is applied per command via `http.https://github.com/.extraHeader` — nothing is written to global or repo `git config`.
