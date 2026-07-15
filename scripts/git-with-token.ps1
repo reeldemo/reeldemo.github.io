@@ -1,11 +1,10 @@
 # Run git or gh with GH_TOKEN from the shared reeldemo .env.local (no global git config).
-param(
-    [string]$EnvFile = "C:\Users\Julian\Documents\Programming\reeldemo.io\.env.local",
-    [Parameter(ValueFromRemainingArguments = $true)]
-    [string[]]$CommandArgs
-)
+# Optional: set REELDEMO_ENV_FILE to override the default .env.local path.
 
 $ErrorActionPreference = "Stop"
+
+$DefaultEnvFile = "C:\Users\Julian\Documents\Programming\reeldemo.io\.env.local"
+$EnvFile = if ($env:REELDEMO_ENV_FILE) { $env:REELDEMO_ENV_FILE } else { $DefaultEnvFile }
 
 function Get-GhTokenFromEnvFile {
     param([string]$Path)
@@ -23,7 +22,7 @@ function Get-GhTokenFromEnvFile {
     throw "GH_TOKEN not found in $Path"
 }
 
-if ($CommandArgs.Count -eq 0) {
+if ($args.Count -eq 0) {
     Write-Error "Usage: git-with-token.ps1 <git|gh> <args...>"
     exit 1
 }
@@ -32,10 +31,10 @@ $token = Get-GhTokenFromEnvFile -Path $EnvFile
 $env:GITHUB_TOKEN = $token
 $env:GH_TOKEN = $token
 
-$tool = $CommandArgs[0]
+$tool = $args[0]
 $toolArgs = @()
-if ($CommandArgs.Count -gt 1) {
-    $toolArgs = $CommandArgs[1..($CommandArgs.Count - 1)]
+if ($args.Count -gt 1) {
+    $toolArgs = $args[1..($args.Count - 1)]
 }
 
 if ($tool -eq "gh") {
@@ -44,7 +43,7 @@ if ($tool -eq "gh") {
 }
 
 if ($tool -eq "git") {
-    $header = "AUTHORIZATION: bearer $token"
+    $header = "Authorization: Bearer $token"
     & git -c "http.https://github.com/.extraHeader=$header" @toolArgs
     exit $LASTEXITCODE
 }
