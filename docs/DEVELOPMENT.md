@@ -24,9 +24,10 @@ From this repo (or any repo that ships the same `scripts/` wrappers):
 .\scripts\pull.ps1 origin main
 
 # Override env file path (advanced)
-.\scripts\git-with-token.ps1 -EnvFile C:\path\to\.env.local git push origin main
+$env:REELDEMO_ENV_FILE = 'C:\path\to\.env.local'
+.\scripts\git-with-token.ps1 git push origin main
 ```
 
 The **reelsynth** app clone at `C:\Users\Julian\Documents\Programming\github\reeldemo\reelsynth` includes thin wrappers that call the shared `.env.local` path above. The landing site lives only in this repo (`reeldemo.io`), not under `github\reeldemo\`.
 
-Auth is applied per command via `http.https://github.com/.extraHeader` — nothing is written to global or repo `git config`.
+Auth is applied per command via a temporary `url.insteadOf` rewrite and disabled credential helpers — nothing is written to global or repo `git config`.
