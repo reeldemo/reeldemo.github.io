@@ -43,8 +43,9 @@ if ($tool -eq "gh") {
 }
 
 if ($tool -eq "git") {
-    $header = "Authorization: Bearer $token"
-    & git -c "http.https://github.com/.extraHeader=$header" @toolArgs
+    $env:GIT_TERMINAL_PROMPT = "0"
+    $insteadOf = "url.https://x-access-token:$token@github.com/.insteadOf=https://github.com/"
+    & git -c credential.helper= -c credential.https://github.com.helper= -c $insteadOf @toolArgs
     exit $LASTEXITCODE
 }
 
