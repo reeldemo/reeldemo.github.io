@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kaleidoscope ASCII · Promo visuals engine</title>
-  <meta name="description" content="Reeldemo Kaleidoscope is a Rust-fast mirror and ASCII art engine for promos, social ads, and landing visuals." />
+  <title>Kaleidoscope ASCII · Scene engine</title>
+  <meta name="description" content="Reeldemo Kaleidoscope is an ASCII scene engine — kaleidoscope mirrors plus custom animations like particles and jellyfish — for promos, social ads, and landing visuals." />
   <meta name="theme-color" content="#3f595b" />
   <meta property="og:title" content="Kaleidoscope ASCII" />
-  <meta property="og:description" content="Rust-fast mirror and ASCII art engine for promos and landing visuals." />
+  <meta property="og:description" content="ASCII scene engine: kaleidoscope plus custom animations for promos and landing visuals." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://reeldemo.github.io/kaleidoscope/" />
   <link rel="stylesheet" href="../styles.css" />
@@ -39,11 +39,11 @@
     <section class="page-hero page-hero--wild grid-bg" data-reveal>
       <span class="page-hero-watermark" aria-hidden="true">KALEIDO</span>
       <p class="breadcrumb"><a href="/">Home</a> · Visuals</p>
-      <div class="hero-badge"><span class="dot" aria-hidden="true"></span> ASCII · Rust · Promos</div>
+      <div class="hero-badge"><span class="dot" aria-hidden="true"></span> ASCII · Scenes · Promos</div>
       <h1>Kaleidoscope<br />ASCII</h1>
       <p class="lede">
-        Fast kaleidoscope mirror and ASCII art engine for Reeldemo promos, social ads, and landing visuals.
-        Sub-millisecond renders at terminal scale. Try the flags below and watch the loop update live.
+        ASCII scene engine for Reeldemo promos — kaleidoscope mirrors plus custom animations
+        (particles, jellyfish, and more). Tune a scene below and watch the loop update live.
       </p>
       <div class="cta-row">
         <a class="btn primary" href="https://github.com/reeldemo/reeldemo-kaleidoscope">View on GitHub</a>
@@ -56,67 +56,23 @@
       <div class="section-head">
         <h2>Live demo</h2>
         <p class="section-intro">
-          Same options as the Rust engine and CLI — upload a still or pick a stock sample.
+          Pick a scene from the engine registry — kaleidoscope patterns, particle clouds, or jellyfish —
+          then tune params live.
         </p>
       </div>
 
       <div class="ka-demo">
         <aside class="ka-demo-controls">
-          <h2>Render flags</h2>
+          <h2>Scene engine</h2>
           <p id="ka-demo-status" class="ka-demo-status">● live loop</p>
 
-          <label class="ka-file-drop">
-            <input type="file" id="ka-demo-file" accept="image/*" hidden />
-            Drop image or click to upload
-          </label>
+          <p class="ka-control-label">Scene</p>
+          <div class="ka-sample-picks ka-scene-picks" id="ka-scene-picks" role="group" aria-label="Scene"></div>
 
-          <div class="ka-sample-picks" id="ka-sample-picks"></div>
-
-          <label class="ka-slider">
-            <span>segments <output id="ka-segments-val">8</output></span>
-            <input type="range" id="ka-segments" min="3" max="16" value="8" step="1" />
-          </label>
-          <label class="ka-slider">
-            <span>rotation <output id="ka-rotation-val">0°</output></span>
-            <input type="range" id="ka-rotation" min="0" max="360" value="0" step="1" />
-          </label>
           <label class="ka-slider">
             <span>density <output id="ka-cols-val">auto</output></span>
             <input type="range" id="ka-cols" min="0" max="100" value="65" step="1" />
           </label>
-          <label class="ka-slider">
-            <span>contrast <output id="ka-contrast-val">1.18</output></span>
-            <input type="range" id="ka-contrast" min="50" max="200" value="118" step="1" />
-          </label>
-          <label class="ka-slider">
-            <span>brightness <output id="ka-brightness-val">-0.03</output></span>
-            <input type="range" id="ka-brightness" min="-30" max="30" value="-3" step="1" />
-          </label>
-          <label class="ka-slider">
-            <span>pulse <output id="ka-pulse-val">35%</output></span>
-            <input type="range" id="ka-pulse" min="0" max="100" value="35" step="1" />
-          </label>
-          <label class="ka-slider">
-            <span>loop speed <output id="ka-speed-val">50%</output></span>
-            <input type="range" id="ka-speed" min="25" max="200" value="50" step="5" />
-          </label>
-          <label class="ka-slider">
-            <span>geometry</span>
-            <select id="ka-geometry">
-              <option value="square" selected>square (full grid)</option>
-              <option value="circle">circle (inscribed)</option>
-            </select>
-          </label>
-          <div class="ka-harmonics-group" id="ka-harmonics-group" hidden>
-            <label class="ka-slider">
-              <span>harmonics l <output id="ka-harmonics-l-val">3</output></span>
-              <input type="range" id="ka-harmonics-l" min="0" max="4" value="3" step="1" disabled />
-            </label>
-            <label class="ka-slider">
-              <span>harmonics m <output id="ka-harmonics-m-val">2</output></span>
-              <input type="range" id="ka-harmonics-m" min="-4" max="4" value="2" step="1" disabled />
-            </label>
-          </div>
           <label class="ka-slider">
             <span>color scheme</span>
             <select id="ka-color-scheme">
@@ -136,17 +92,125 @@
             <span>seed color</span>
             <input type="text" id="ka-seed-color" placeholder="#3f595b" spellcheck="false" />
           </label>
-          <label class="ka-check">
-            <input type="checkbox" id="ka-invert" />
-            invert
-          </label>
+
+          <div id="ka-panel-kaleidoscope">
+            <p class="ka-control-label">Kaleidoscope</p>
+            <label class="ka-file-drop">
+              <input type="file" id="ka-demo-file" accept="image/*" hidden />
+              Drop image or click to upload
+            </label>
+            <div class="ka-sample-picks" id="ka-sample-picks"></div>
+
+            <label class="ka-slider">
+              <span>segments <output id="ka-segments-val">8</output></span>
+              <input type="range" id="ka-segments" min="3" max="16" value="8" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>rotation <output id="ka-rotation-val">0°</output></span>
+              <input type="range" id="ka-rotation" min="0" max="360" value="0" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>contrast <output id="ka-contrast-val">1.18</output></span>
+              <input type="range" id="ka-contrast" min="50" max="200" value="118" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>brightness <output id="ka-brightness-val">-0.03</output></span>
+              <input type="range" id="ka-brightness" min="-30" max="30" value="-3" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>pulse <output id="ka-pulse-val">35%</output></span>
+              <input type="range" id="ka-pulse" min="0" max="100" value="35" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>loop speed <output id="ka-speed-val">50%</output></span>
+              <input type="range" id="ka-speed" min="25" max="200" value="50" step="5" />
+            </label>
+            <label class="ka-slider">
+              <span>geometry</span>
+              <select id="ka-geometry">
+                <option value="square" selected>square (full grid)</option>
+                <option value="circle">circle (inscribed)</option>
+              </select>
+            </label>
+            <div class="ka-harmonics-group" id="ka-harmonics-group" hidden>
+              <label class="ka-slider">
+                <span>harmonics l <output id="ka-harmonics-l-val">3</output></span>
+                <input type="range" id="ka-harmonics-l" min="0" max="4" value="3" step="1" disabled />
+              </label>
+              <label class="ka-slider">
+                <span>harmonics m <output id="ka-harmonics-m-val">2</output></span>
+                <input type="range" id="ka-harmonics-m" min="-4" max="4" value="2" step="1" disabled />
+              </label>
+            </div>
+            <div id="ka-pattern-extra" hidden>
+              <div id="ka-extra-interference" hidden>
+                <label class="ka-slider">
+                  <span>waves <output id="ka-waves-val">5</output></span>
+                  <input type="range" id="ka-waves" min="3" max="9" value="5" step="1" />
+                </label>
+              </div>
+              <div id="ka-extra-rose" hidden>
+                <label class="ka-slider">
+                  <span>petals <output id="ka-petals-val">4</output></span>
+                  <input type="range" id="ka-petals" min="2" max="8" value="4" step="1" />
+                </label>
+              </div>
+              <div id="ka-extra-noise" hidden>
+                <label class="ka-slider">
+                  <span>noise warp <output id="ka-noise-warp-val">45%</output></span>
+                  <input type="range" id="ka-noise-warp" min="0" max="150" value="45" step="5" />
+                </label>
+              </div>
+            </div>
+            <label class="ka-check">
+              <input type="checkbox" id="ka-invert" />
+              invert
+            </label>
+          </div>
+
+          <div id="ka-panel-particles" hidden>
+            <p class="ka-control-label">Particles</p>
+            <label class="ka-slider">
+              <span>count <output id="ka-p-count-val">120</output></span>
+              <input type="range" id="ka-p-count" min="8" max="400" value="120" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>attract <output id="ka-p-attract-val">35%</output></span>
+              <input type="range" id="ka-p-attract" min="0" max="100" value="35" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>radius <output id="ka-p-radius-val">1.2</output></span>
+              <input type="range" id="ka-p-radius" min="4" max="30" value="12" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>speed <output id="ka-p-speed-val">100%</output></span>
+              <input type="range" id="ka-p-speed" min="10" max="300" value="100" step="5" />
+            </label>
+          </div>
+
+          <div id="ka-panel-jellyfish" hidden>
+            <p class="ka-control-label">Jellyfish</p>
+            <label class="ka-slider">
+              <span>count <output id="ka-j-count-val">2</output></span>
+              <input type="range" id="ka-j-count" min="0" max="8" value="2" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>tentacles <output id="ka-j-tentacles-val">7</output></span>
+              <input type="range" id="ka-j-tentacles" min="3" max="12" value="7" step="1" />
+            </label>
+            <label class="ka-slider">
+              <span>speed <output id="ka-j-speed-val">100%</output></span>
+              <input type="range" id="ka-j-speed" min="10" max="300" value="100" step="5" />
+            </label>
+            <button type="button" id="ka-j-spawn" class="btn ghost">Spawn jellyfish</button>
+          </div>
 
           <button type="button" id="ka-play-btn" class="btn ghost">Pause loop</button>
 
           <p class="ka-demo-hint">
-            Pattern modes map to <code>--pattern procedural|spherical-harmonics</code>,
-            <code>--harmonics &lt;l&gt; &lt;m&gt;</code>, <code>--color-scheme majico|neon|…</code>,
-            <code>--seed-hue &lt;deg&gt;</code>, and <code>--geometry square|circle</code>.
+            Powered by <code>@reeldemo/kaleidoscope-engine</code> (vendored ESM).
+            Kaleidoscope patterns map to <code>--pattern</code> modes;
+            particles and jellyfish share the same luma→ASCII pipeline.
           </p>
         </aside>
 
@@ -163,35 +227,37 @@
       <div class="use-grid">
         <div class="use-block">
           <h3>Landing heroes</h3>
-          <p>ASCII kaleidoscope loops power the Reeldemo org page and product promos — same engine, browser and CLI.</p>
+          <p>ASCII scene loops power the Reeldemo org page and product promos — same engine, browser and CLI.</p>
         </div>
         <div class="use-block">
           <h3>Social ads</h3>
-          <p>Export HTML or ANSI from stills. Match color schemes to brand palettes without a motion graphics pipeline.</p>
+          <p>Export HTML or ANSI from stills and procedural scenes. Match color schemes to brand palettes without a motion graphics pipeline.</p>
         </div>
         <div class="use-block">
-          <h3>Terminal art</h3>
-          <p>Sub-millisecond Rust renders at terminal scale. Drop an image, tune segments and rotation, ship.</p>
+          <h3>Custom animations</h3>
+          <p>Particles, jellyfish, and future creature packs share one luma→charset pipeline — not everything goes through a mirror fold.</p>
         </div>
         <div class="use-block">
-          <h3>npm pipelines</h3>
-          <p><code>@reeldemo/kaleidoscope-ascii</code> with napi-rs bindings for Node and browser asset generation.</p>
+          <h3>Agent control</h3>
+          <p>Scene registry + JSON Schema params (MCP-ready) so agents can list, switch, and tune scenes the same way the demo does.</p>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <p class="section-label">CLI</p>
-      <h2>Install</h2>
+      <p class="section-label">Package</p>
+      <h2>Engine module</h2>
       <p class="section-intro">
-        npm package with Rust core, CLI, and HTML export for promo pipelines.
+        Browser demos vendor <code>@reeldemo/kaleidoscope-engine</code> as ESM.
+        CLI / npm publish follows once the scene API settles — until then use the live demo and the engine repo.
       </p>
-      <pre class="code-block cli-block"><code>npm install @reeldemo/kaleidoscope-ascii
+      <pre class="code-block cli-block"><code>// Scene registry (Node / browser ESM)
+import { createDefaultRegistry, EngineController } from "@reeldemo/kaleidoscope-engine";
 
-npx kaleidoscope ./cover.jpg --segments 8 --color-scheme vinyl --seed-hue 30 --html
-
-npx kaleidoscope --pattern spherical-harmonics --harmonics 3 2 \
-  --color-scheme neon --ansi</code></pre>
+const registry = createDefaultRegistry();
+const engine = new EngineController(registry);
+engine.setScene("particles", { count: 160, colorScheme: "neon" });
+const { ascii } = engine.renderFrame({ format: "html" });</code></pre>
     </section>
 
     <section class="section">
@@ -199,24 +265,24 @@ npx kaleidoscope --pattern spherical-harmonics --harmonics 3 2 \
       <h2>Under the hood</h2>
       <div class="detail-grid">
         <div class="detail-block">
-          <h3>Rust core</h3>
-          <p>Parallel sampling with configurable segments, rotation, contrast, brightness, and invert.</p>
+          <h3>Scene plugins</h3>
+          <p><code>@reeldemo/kaleidoscope-engine</code> — registry, tick/sample, luma→ASCII rasterizer. Kaleidoscope is one plugin among many.</p>
         </div>
         <div class="detail-block">
-          <h3>npm package</h3>
-          <p><code>@reeldemo/kaleidoscope-ascii</code> with napi-rs bindings for Node and browser pipelines.</p>
+          <h3>Shared pipeline</h3>
+          <p>Every scene fills a luminance grid; the same charset and palette hooks render HTML, ANSI, or plain text.</p>
         </div>
         <div class="detail-block">
-          <h3>CLI &amp; HTML</h3>
-          <p><code>kaleidoscope image.jpg --segments 8 --color-scheme majico --html</code> for one-shot promo assets.</p>
+          <h3>Browser + Node</h3>
+          <p>TypeScript ESM for demos and MCP. Rust/napi publish remains a follow-up once the scene API stabilizes.</p>
         </div>
       </div>
     </section>
 
     <div class="cta-band">
       <div>
-        <h2>Turn stills into hypnotic symmetry</h2>
-        <p>Install the package, tune the flags, and export promos without leaving the terminal.</p>
+        <h2>Turn scenes into hypnotic ASCII</h2>
+        <p>Switch scenes, tune params, and export promos without leaving the terminal or the browser demo.</p>
       </div>
       <a class="btn primary" href="https://github.com/reeldemo/reeldemo-kaleidoscope">github.com/reeldemo/reeldemo-kaleidoscope</a>
     </div>

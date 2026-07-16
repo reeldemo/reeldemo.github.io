@@ -959,8 +959,33 @@ pre code,
   margin-bottom: 0.25rem;
 }
 
-.ka-harmonics-group[hidden] {
+.ka-harmonics-group[hidden],
+.ka-panel[hidden],
+#ka-panel-particles[hidden],
+#ka-panel-jellyfish[hidden],
+#ka-panel-kaleidoscope[hidden],
+#ka-pattern-extra[hidden],
+#ka-extra-interference[hidden],
+#ka-extra-rose[hidden],
+#ka-extra-noise[hidden] {
   display: none;
+}
+
+.ka-control-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0.55rem 0 0.2rem;
+}
+
+.ka-scene-picks {
+  margin-bottom: 0.45rem;
+}
+
+.ka-scene-picks button.active {
+  background: color-mix(in srgb, var(--accent) 22%, var(--bg-muted));
 }
 
 .ka-slider span {

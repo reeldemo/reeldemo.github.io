@@ -1,3 +1,7 @@
+/**
+ * Org hero kaleidoscope — standalone procedural fold (v1).
+ * Product demo at /kaleidoscope/ uses @reeldemo/kaleidoscope-engine; this hero stays as-is.
+ */
 (function () {
   const CHARSET = "@#S&%*+=-:. ";
   const LOOP_MS = 22000;
