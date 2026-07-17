@@ -76,25 +76,25 @@
       </div>
 
       <div class="download-grid" role="list" aria-label="Platform downloads">
-        <a class="download-card" role="listitem" data-asset="macos-aarch64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
+        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="macos" data-arch="aarch64" data-asset="macos-aarch64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">macOS</span>
           <span class="download-card__arch">Apple Silicon (M1+)</span>
-          <span class="download-card__action btn primary">Download .zip</span>
-        </a>
-        <a class="download-card" role="listitem" data-asset="macos-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
-          <span class="download-card__platform">macOS</span>
-          <span class="download-card__arch">Intel (x86_64)</span>
-          <span class="download-card__action btn primary">Download .zip</span>
-        </a>
-        <a class="download-card" role="listitem" data-asset="linux-x86_64.tar.gz" href="https://github.com/reeldemo/reelsynth/releases/latest">
-          <span class="download-card__platform">Linux</span>
-          <span class="download-card__arch">x86_64 (.tar.gz)</span>
           <span class="download-card__action btn primary">Download</span>
         </a>
-        <a class="download-card" role="listitem" data-asset="windows-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
+        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="macos" data-arch="x86_64" data-asset="macos-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
+          <span class="download-card__platform">macOS</span>
+          <span class="download-card__arch">Intel (x86_64)</span>
+          <span class="download-card__action btn primary">Download</span>
+        </a>
+        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="linux" data-arch="x86_64" data-asset="linux-x86_64.tar.gz" href="https://github.com/reeldemo/reelsynth/releases/latest">
+          <span class="download-card__platform">Linux</span>
+          <span class="download-card__arch">x86_64</span>
+          <span class="download-card__action btn primary">Download</span>
+        </a>
+        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="windows" data-arch="x86_64" data-asset="windows-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">Windows</span>
           <span class="download-card__arch">x86_64</span>
-          <span class="download-card__action btn primary">Download .zip</span>
+          <span class="download-card__action btn primary">Download</span>
         </a>
       </div>
 
@@ -214,7 +214,14 @@
 
   <script src="../shared.js"></script>
   <script src="../waitlist.js"></script>
+  <script src="../download-tracking.js"></script>
   <script>
+    initDownloadTracking({
+      product: "reelsynth",
+      version: "0.1.0",
+      source: "reeldemo.github.io/reelsynth",
+      touchpoint: "download_card",
+    });
     initWaitlistForm({
       formId: "waitlist-form",
       statusId: "waitlist-status",
