@@ -70,33 +70,37 @@
       <div class="section-head">
         <h2>Standalone app</h2>
         <p class="section-intro">
-          ReelSynth <strong>v0.1.0</strong> — open-source wavetable instrument with realtime audio, MIDI input, and offline export CLI.
+          Open-source wavetable instrument with realtime audio, MIDI input, and offline export CLI.
           No account required.
         </p>
       </div>
 
       <div class="download-grid" role="list" aria-label="Platform downloads">
-        <a class="download-card" role="listitem" href="https://github.com/reeldemo/reelsynth/releases/download/v0.1.0/reelsynth-0.1.0-macos-aarch64.zip">
+        <a class="download-card" role="listitem" data-asset="macos-aarch64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">macOS</span>
           <span class="download-card__arch">Apple Silicon (M1+)</span>
           <span class="download-card__action btn primary">Download .zip</span>
         </a>
-        <a class="download-card" role="listitem" href="https://github.com/reeldemo/reelsynth/releases/download/v0.1.0/reelsynth-0.1.0-macos-x86_64.zip">
+        <a class="download-card" role="listitem" data-asset="macos-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">macOS</span>
           <span class="download-card__arch">Intel (x86_64)</span>
           <span class="download-card__action btn primary">Download .zip</span>
         </a>
-        <a class="download-card" role="listitem" href="https://github.com/reeldemo/reelsynth/releases/download/v0.1.0/reelsynth-0.1.0-linux-x86_64.tar.gz">
+        <a class="download-card" role="listitem" data-asset="linux-x86_64.tar.gz" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">Linux</span>
           <span class="download-card__arch">x86_64 (.tar.gz)</span>
           <span class="download-card__action btn primary">Download</span>
         </a>
-        <a class="download-card" role="listitem" href="https://github.com/reeldemo/reelsynth/releases/download/v0.1.0/reelsynth-0.1.0-windows-x86_64.zip">
+        <a class="download-card" role="listitem" data-asset="windows-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">Windows</span>
           <span class="download-card__arch">x86_64</span>
           <span class="download-card__action btn primary">Download .zip</span>
         </a>
       </div>
+
+      <p class="download-version" id="download-version" aria-live="polite">
+        Current release: <a id="download-version-link" href="https://github.com/reeldemo/reelsynth/releases/latest"><strong id="download-version-label">latest</strong></a>
+      </p>
 
       <div class="download-meta">
         <p><strong>System requirements:</strong> 64-bit OS, audio output device. Linux builds need ALSA/PulseAudio and X11 or Wayland for the UI. MIDI input is optional.</p>
@@ -104,7 +108,7 @@
           <strong>Build from source:</strong>
           <a href="https://github.com/reeldemo/reelsynth">github.com/reeldemo/reelsynth</a>
           — requires Rust 1.75+.
-          <a href="https://github.com/reeldemo/reelsynth/releases/tag/v0.1.0">All release assets</a>
+          <a id="download-all-assets" href="https://github.com/reeldemo/reelsynth/releases/latest">All release assets</a>
         </p>
         <div class="chip-row" aria-label="Included binaries">
           <span class="chip">reelsynth-app</span>
@@ -220,6 +224,42 @@
       optionalField: "daw",
       successMessage: "You're on the list. We'll email when the plugin beta is ready.",
     });
+
+    (function bindLatestRelease() {
+      const api = "https://api.github.com/repos/reeldemo/reelsynth/releases/latest";
+      const label = document.getElementById("download-version-label");
+      const versionLink = document.getElementById("download-version-link");
+      const allAssets = document.getElementById("download-all-assets");
+      const cards = document.querySelectorAll(".download-card[data-asset]");
+
+      fetch(api, { headers: { Accept: "application/vnd.github+json" } })
+        .then((res) => {
+          if (!res.ok) throw new Error("release fetch failed");
+          return res.json();
+        })
+        .then((release) => {
+          const tag = release.tag_name || "";
+          const ver = tag.replace(/^v/, "");
+          if (!tag || !ver) return;
+
+          if (label) label.textContent = tag;
+          if (versionLink) versionLink.href = release.html_url || `https://github.com/reeldemo/reelsynth/releases/tag/${tag}`;
+          if (allAssets) allAssets.href = versionLink ? versionLink.href : allAssets.href;
+
+          const byName = new Map(
+            (release.assets || []).map((a) => [a.name, a.browser_download_url])
+          );
+          cards.forEach((card) => {
+            const suffix = card.getAttribute("data-asset");
+            const name = `reelsynth-${ver}-${suffix}`;
+            const url = byName.get(name);
+            if (url) card.href = url;
+          });
+        })
+        .catch(() => {
+          /* Keep /releases/latest fallbacks already in the markup. */
+        });
+    })();
   </script>
 </body>
 </html>
