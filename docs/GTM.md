@@ -9,7 +9,7 @@ Technical product docs remain in [reelsynth/docs](https://github.com/reeldemo/re
 - **Product:** ReelSynth — MIT wavetable synth engine + standalone UI (plugin not shipped yet).
 - **Primary CTA:** Join the **ReelSynth plugin waitlist** (CLAP/VST3/AU target, S7 roadmap).
 - **Audience (hero):** Bedroom / hobby producers who want a **free** wavetable synth workflow.
-- **Motion:** Balanced — stars + waitlist + dev integrators + Reeldemo Studio cross-promo.
+- **Motion:** Balanced — stars + waitlist + dev integrators + ReelStudio cross-promo.
 - **Channels:** GitHub + HN + Reddit (initial wave).
 
 ## What we ship (truthful scope)
@@ -34,7 +34,7 @@ Balanced goals, ranked for decision-making:
 1. **Plugin waitlist growth** (validates S7 priority)
 2. **OSS credibility** (GitHub stars, contributors, presets)
 3. **Developer integrators** (PyO3/Rust usage in other tools)
-4. **Reeldemo Studio** discovery (soft CTA; not required)
+4. **ReelStudio** discovery (soft CTA; not required)
 
 ## ICP and messaging
 
@@ -73,7 +73,7 @@ Waitlist lives on **reeldemo.io/reelsynth** and writes to **Supabase shared with
 
 - GitHub star
 - Discord join (optional; only if you want to moderate)
-- Reeldemo Studio “Used in Studio” click-through
+- ReelStudio “Used in Studio” click-through
 
 ## Launch checklist
 
@@ -109,7 +109,7 @@ Track weekly:
 - GitHub: stars, clones, top referrers
 - Waitlist: signups/day, DAW breakdown, source/utm
 - Docs: pageviews (landing + docs index)
-- Reeldemo Studio: click-throughs + trial signups (secondary)
+- ReelStudio: click-throughs + trial signups (secondary)
 - Community: Discord joins (if enabled)
 
 ## Risks and mitigations

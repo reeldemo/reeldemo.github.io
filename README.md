@@ -9,7 +9,7 @@ This repo is **standalone** — it does not live alongside app code in a parent 
 | Path | Purpose |
 |------|---------|
 | `/` | Org landing page |
-| `/studio/` | Reeldemo Studio product page |
+| `/studio/` | ReelStudio product page |
 | `/reelsynth/` | ReelSynth product page (links to [reelsynth](https://github.com/reeldemo/reelsynth) app repo) |
 | `/kaleidoscope/` | Kaleidoscope promo + live demo |
 | `/blog/` | Product blog |
@@ -20,7 +20,7 @@ This repo is **standalone** — it does not live alongside app code in a parent 
 | Repo | Role |
 |------|------|
 | [reeldemo/reelsynth](https://github.com/reeldemo/reelsynth) | Wavetable synth app (Rust) — developer docs live there |
-| [reeldemo/reeldemo-ableton](https://github.com/reeldemo/reeldemo-ableton) | Reeldemo Studio / Ableton integration |
+| [reeldemo/reeldemo-ableton](https://github.com/reeldemo/reeldemo-ableton) | ReelStudio / Ableton integration |
 | [reeldemo/reeldemo-kaleidoscope](https://github.com/reeldemo/reeldemo-kaleidoscope) | Kaleidoscope ASCII engine |
 
 ## Local workspace

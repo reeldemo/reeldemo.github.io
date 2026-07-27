@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kaleidoscope ASCII · Scene engine</title>
-  <meta name="description" content="Reeldemo Kaleidoscope is an ASCII scene engine — kaleidoscope mirrors plus custom animations like particles and jellyfish — for promos, social ads, and landing visuals." />
+  <meta name="description" content="Reeldemo Kaleidoscope is an ASCII scene engine for promos, social ads, and landing visuals. Kaleidoscope mirrors, particles, jellyfish, and custom animations. Built in Rust." />
   <meta name="theme-color" content="#3f595b" />
   <meta property="og:title" content="Kaleidoscope ASCII" />
-  <meta property="og:description" content="ASCII scene engine: kaleidoscope plus custom animations for promos and landing visuals." />
+  <meta property="og:description" content="ASCII scene engine for promos and landing visuals. Kaleidoscope, particles, and custom animations. Built in Rust." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://reeldemo.github.io/kaleidoscope/" />
   <link rel="stylesheet" href="../styles.css" />
@@ -42,8 +42,8 @@
       <div class="hero-badge"><span class="dot" aria-hidden="true"></span> ASCII · Scenes · Promos</div>
       <h1>Kaleidoscope<br />ASCII</h1>
       <p class="lede">
-        ASCII scene engine for Reeldemo promos — kaleidoscope mirrors plus custom animations
-        (particles, jellyfish, and more). Tune a scene below and watch the loop update live.
+        ASCII scene engine for Reeldemo promos. Kaleidoscope mirrors, particles, jellyfish, and more.
+        Tune a scene below and watch the loop update live. Built in Rust.
       </p>
       <div class="cta-row">
         <a class="btn primary" href="https://github.com/reeldemo/reeldemo-kaleidoscope">View on GitHub</a>
@@ -56,8 +56,8 @@
       <div class="section-head">
         <h2>Live demo</h2>
         <p class="section-intro">
-          Pick a scene from the engine registry — kaleidoscope patterns, particle clouds, or jellyfish —
-          then tune params live.
+          Pick a scene from the engine registry (kaleidoscope patterns, particle clouds, or jellyfish)
+          and tune params live.
         </p>
       </div>
 
@@ -227,7 +227,7 @@
       <div class="use-grid">
         <div class="use-block">
           <h3>Landing heroes</h3>
-          <p>ASCII scene loops power the Reeldemo org page and product promos — same engine, browser and CLI.</p>
+          <p>ASCII scene loops power the Reeldemo org page and product promos. Same engine in browser and CLI.</p>
         </div>
         <div class="use-block">
           <h3>Social ads</h3>
@@ -235,11 +235,11 @@
         </div>
         <div class="use-block">
           <h3>Custom animations</h3>
-          <p>Particles, jellyfish, and future creature packs share one luma→charset pipeline — not everything goes through a mirror fold.</p>
+          <p>Particles, jellyfish, and future creature packs share one luma-to-charset pipeline. Some scenes use mirrors, others render directly.</p>
         </div>
         <div class="use-block">
           <h3>Agent control</h3>
-          <p>Scene registry + JSON Schema params (MCP-ready) so agents can list, switch, and tune scenes the same way the demo does.</p>
+          <p>Scene registry with structured params so tools and agents can list, switch, and tune scenes the same way the demo does.</p>
         </div>
       </div>
     </section>
@@ -249,7 +249,7 @@
       <h2>Engine module</h2>
       <p class="section-intro">
         Browser demos vendor <code>@reeldemo/kaleidoscope-engine</code> as ESM.
-        CLI / npm publish follows once the scene API settles — until then use the live demo and the engine repo.
+        CLI and npm publish follow once the scene API settles. Until then, use the live demo and the engine repo.
       </p>
       <pre class="code-block cli-block"><code>// Scene registry (Node / browser ESM)
 import { createDefaultRegistry, EngineController } from "@reeldemo/kaleidoscope-engine";
@@ -266,7 +266,7 @@ const { ascii } = engine.renderFrame({ format: "html" });</code></pre>
       <div class="detail-grid">
         <div class="detail-block">
           <h3>Scene plugins</h3>
-          <p><code>@reeldemo/kaleidoscope-engine</code> — registry, tick/sample, luma→ASCII rasterizer. Kaleidoscope is one plugin among many.</p>
+          <p><code>@reeldemo/kaleidoscope-engine</code>: registry, tick/sample, luma-to-ASCII rasterizer. Kaleidoscope is one plugin among many.</p>
         </div>
         <div class="detail-block">
           <h3>Shared pipeline</h3>
@@ -274,7 +274,7 @@ const { ascii } = engine.renderFrame({ format: "html" });</code></pre>
         </div>
         <div class="detail-block">
           <h3>Browser + Node</h3>
-          <p>TypeScript ESM for demos and MCP. Rust/napi publish remains a follow-up once the scene API stabilizes.</p>
+          <p>TypeScript ESM for demos. Rust core with napi bindings follows once the scene API stabilizes.</p>
         </div>
       </div>
     </section>
