@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Wavetable Synthesizer for Ableton: Get Started with ReelSynth · Reeldemo Blog</title>
+  <meta name="description" content="How to install and use ReelSynth, a free wavetable synthesizer with an Ableton plugin. Setup, sound design, Vital and Serum imports, routing, and troubleshooting." />
+  <meta name="theme-color" content="#3f595b" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <script>document.documentElement.classList.add("is-loading");</script>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="site-header">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Reeldemo
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#products" data-nav="/">Products</a>
+        <a href="/studio/" data-nav="/studio">Studio</a>
+        <a href="/reelsynth/" data-nav="/reelsynth">ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
+        <a href="/blog/" data-nav="/blog">Blog</a>
+        <a href="https://github.com/reeldemo">GitHub</a>
+        <a class="nav-cta" href="/reelsynth/#download">Download free</a>
+      </nav>
+    </header>
+
+    <article class="section">
+      <p class="breadcrumb"><a href="/blog/">Blog</a> · Synthesizer</p>
+      <p class="blog-meta">2026-07-27 · Synthesizer</p>
+      <h1>Free Wavetable Synthesizer for Ableton: Get Started with ReelSynth</h1>
+      <div class="prose">
+        <p><strong>ReelSynth</strong> is a free wavetable software synthesizer with an Ableton plugin. This guide walks bedroom producers and sound designers through install, first patches, Vital and Serum imports, Ableton routing, and common fixes. Download the latest build from <a href="/reelsynth/#download">reeldemo.io/reelsynth</a>.</p>
+
+        <h2>What is wavetable synthesis and why use it in Ableton Live?</h2>
+        <p>Wavetable synthesis builds sound from a series of single-cycle waveforms stored in a table. An oscillator reads a position in that table and can sweep between frames, so the harmonic content changes over time. You then shape that moving source with filters, envelopes, and modulation.</p>
+        <p>Subtractive synthesis usually starts with one rich waveform and removes frequencies with filters. Wavetable changes the waveform itself first, so you get motion before you reach for EQ or layers. That makes it a fast path to evolving pads, metallic leads, and animated basses inside Ableton.</p>
+        <p>In Live, map wavetable position to clip envelopes or Instrument Rack macros. Drive it with LFOs. Keep patches editable so collaborators can open your set and keep working. ReelSynth is built for that workflow: free instrument, Ableton plugin, open formats.</p>
+
+        <h2>Installing and setting up ReelSynth in Ableton Live</h2>
+        <p>1. Download the latest build for your platform from <a href="/reelsynth/#download">the ReelSynth download page</a>. No account required. MIT licensed.</p>
+        <p>2. On macOS, install AU and/or VST3. Typical folders: <code>/Library/Audio/Plug-Ins/Components</code> (AU) and <code>/Library/Audio/Plug-Ins/VST3</code>. If macOS blocks the app, use System Settings → Privacy &amp; Security, or right-click Open.</p>
+        <p>3. On Windows, install VST3 to <code>C:\Program Files\Common Files\VST3</code> unless you use a custom path.</p>
+        <p>4. In Ableton Live, open Preferences → Plug-Ins. Enable Audio Units (macOS) and/or VST3 system folders. Click Rescan. Restart Live if the plugin does not appear. Ableton’s plug-in guide: <a href="https://www.ableton.com/en/manual/live-plugins/">live-plugins</a>.</p>
+        <p>5. In Live’s Browser, open Plug-Ins, find ReelSynth, and drag it onto a MIDI track. You can also start in the standalone app, then move patches into Live.</p>
+
+        <h2>Basic sound design workflow with ReelSynth</h2>
+        <p>1. Start from an init patch. One oscillator, unison off, low voice count. Play a short MIDI phrase so you hear a clean baseline.</p>
+        <p>2. Load a wavetable and move Position slowly. Assign an LFO or envelope to Position for motion. Save a preset when the movement feels useful.</p>
+        <p>3. Add a second oscillator for thickness if you need it. Try mild warp or FM-style modes, then add a few unison voices with modest detune. Drop voices if CPU climbs.</p>
+        <p>4. Use a low-pass filter with a clear envelope for plucks, or slower envelopes for pads. Keep resonance controlled so the patch sits in a mix.</p>
+        <p>5. Map Position, filter cutoff, and detune to macros. Label them. Save the device preset so you can reuse the layout in other sets.</p>
+        <p>6. Import Vital <code>.vitaltable</code>, Serum wavetable content, or single-cycle WAV folders when you want to start from tables you already own. After import, sweep Position and reshape the filter so the sound fits your track.</p>
+
+        <h2>Routing and modulation inside Ableton Live</h2>
+        <p>Create a MIDI track, load ReelSynth, and record or play clips as usual. For layers, put ReelSynth in an Instrument Rack with multiple chains and key or velocity zones. Map synth parameters to Rack macros for performance control. Ableton’s Instrument Racks guide: <a href="https://www.ableton.com/en/manual/instrument-racks/">instrument-racks</a>.</p>
+        <p>For sidechain ducking, add Ableton Compressor on the ReelSynth track, enable Sidechain, and pick your kick track as the input. Tune ratio, attack, and release so pads breathe with the groove.</p>
+        <p>Use Send knobs for reverb and delay on return tracks. Keep a dry copy on the source track so you can EQ or compress the original independently. Combine ReelSynth’s internal LFOs and envelopes with Live clip or arrangement automation on macros for section changes.</p>
+
+        <h2>Performance tips, preset management, and exporting</h2>
+        <p>Map three high-impact macros first: wavetable position, filter cutoff, and unison detune. Limit each macro range so one knob stays musical. Assign those macros to your controller in MIDI Map Mode.</p>
+        <p>Name presets clearly (for example <code>bass_swept_v1</code> or <code>pad_lush_v2</code>). Save both the ReelSynth device preset and an Instrument Rack when macros and FX matter. Keep third-party wavetables in one folder with a source prefix such as <code>Vital_</code> or <code>Serum_</code>.</p>
+        <p>When handing off a set, use Ableton’s Collect All and Save. For collaborators without the plugin, export stems and include a README with OS, Live version, and plugin version. ReelSynth also works with <a href="/studio/">ReelStudio</a> for offline rendering and patch export into studio pipelines.</p>
+
+        <h2>Troubleshooting and compatibility checklist</h2>
+        <p><strong>Plugin missing:</strong> Confirm AU/VST3 files are in the system folders. Enable the matching formats in Preferences → Plug-Ins, Rescan, restart Live. On Windows, try scanning once as administrator. On macOS, allow the binary in Privacy &amp; Security.</p>
+        <p><strong>High CPU:</strong> Lower unison voices and polyphony. Increase buffer size while arranging. Freeze heavy tracks.</p>
+        <p><strong>Clicks or pitch issues:</strong> Match Live’s sample rate to your audio interface, then restart Live.</p>
+        <p><strong>Apple Silicon:</strong> Prefer the native Apple Silicon build when available. Match AU/VST3 to your Live build.</p>
+        <p>More install detail lives on the <a href="/reelsynth/">ReelSynth product page</a> and in <a href="https://github.com/reeldemo/reelsynth">the GitHub repo</a>.</p>
+
+        <h2>FAQ</h2>
+        <p><strong>Is ReelSynth free?</strong><br />Yes. Free to download and use, MIT licensed. No account required.</p>
+        <p><strong>Does it work in Ableton Live?</strong><br />Yes. Load the VST3 or AU plugin on a MIDI track. Standalone is available too.</p>
+        <p><strong>Can I import Serum or Vital wavetables?</strong><br />Yes. ReelSynth reads Vital <code>.vitaltable</code>, Serum wavetable content, and single-cycle WAV folders.</p>
+        <p><strong>Why does ReelSynth not show up after install?</strong><br />Rescan plug-ins in Live Preferences, confirm the files sit in the system AU/VST3 folders, then restart Live.</p>
+        <p><strong>What helps with low CPU in a live set?</strong><br />Fewer unison voices, lower polyphony, higher buffer while performing, and frozen tracks for dense patches.</p>
+      </div>
+      <p class="section-intro" style="margin-top: 2rem;"><a href="/reelsynth/#download">Download ReelSynth free →</a></p>
+    </article>
+
+    <footer class="site-footer">
+      <span>© Reeldemo</span>
+      <span><a href="https://github.com/reeldemo">github.com/reeldemo</a></span>
+    </footer>
+  </div>
+
+  <script src="../../shared.js"></script>
+</body>
+</html>
