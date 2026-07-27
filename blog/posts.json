@@ -1,5 +1,19 @@
 [
   {
+    "slug": "import-vital-serum-wavetables-ableton-reelsynth",
+    "title": "Import Vital and Serum Wavetables into Ableton with ReelSynth",
+    "excerpt": "Import Vital and Serum wavetables into Ableton Live with ReelSynth. Formats, export steps, load in Live, and patch tips for producers.",
+    "date": "2026-07-27",
+    "pillar": "Sound design"
+  },
+  {
+    "slug": "from-reference-track-to-editable-ableton-session",
+    "title": "From Reference Track to Editable Ableton Session",
+    "excerpt": "Turn a reference track into an editable Ableton Live session. Keep authorship with clear constraints and a Live handoff.",
+    "date": "2026-07-27",
+    "pillar": "Music production"
+  },
+  {
     "slug": "free-wavetable-synthesizer-for-ableton-get-started-with-reelsynth",
     "title": "Free Wavetable Synthesizer for Ableton: Get Started with ReelSynth",
     "excerpt": "Install and use ReelSynth in Ableton Live: free wavetable synth setup, sound design, Vital and Serum imports, routing, and troubleshooting.",

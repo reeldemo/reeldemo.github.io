@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Import Vital and Serum Wavetables into Ableton with ReelSynth · Reeldemo Blog</title>
+  <meta name="description" content="Import Vital and Serum wavetables into Ableton Live with ReelSynth, a free wavetable synthesizer plugin. Formats, export steps, load in Live, and patch tips." />
+  <meta name="theme-color" content="#3f595b" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <script>document.documentElement.classList.add("is-loading");</script>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="site-header">
+      <a class="logo" href="/">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Reeldemo
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#products" data-nav="/">Products</a>
+        <a href="/studio/" data-nav="/studio">Studio</a>
+        <a href="/reelsynth/" data-nav="/reelsynth">ReelSynth</a>
+        <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
+        <a href="/blog/" data-nav="/blog">Blog</a>
+        <a href="https://github.com/reeldemo">GitHub</a>
+        <a class="nav-cta" href="/reelsynth/#download">Download free</a>
+      </nav>
+    </header>
+
+    <article class="section">
+      <p class="breadcrumb"><a href="/blog/">Blog</a> · Sound design</p>
+      <p class="blog-meta">2026-07-27 · Sound design</p>
+      <h1>Import Vital and Serum Wavetables into Ableton with ReelSynth</h1>
+      <div class="prose">
+        <p>You already have wavetables in Vital or Serum. You want them inside Ableton Live without rebuilding every patch from scratch. <strong>ReelSynth</strong> is a free wavetable software synthesizer with an Ableton plugin that reads common table formats so you can keep designing in Live. Download the latest build from <a href="/reelsynth/#download">reeldemo.io/reelsynth</a>.</p>
+
+        <h2>Why bring Vital and Serum tables into Ableton</h2>
+        <p>Vital and Serum are strong for sound design. Ableton Live is where arrangement, clips, and automation live. Moving tables into a Live instrument keeps the sound editable on a MIDI track: you can automate wavetable position, filter cutoff, and macros next to your drums and vocals.</p>
+        <p>ReelSynth is built as an instrument first. Import tables, shape the voice, play it through the Ableton plugin or the standalone app. Compatible with <a href="/studio/">ReelStudio</a> when you need offline rendering later.</p>
+
+        <h2>Formats ReelSynth accepts</h2>
+        <p>Common starting points:</p>
+        <ul>
+          <li>Vital <code>.vitaltable</code> banks</li>
+          <li>Serum wavetable content (including <code>.fxp</code> wavetable subsets where supported)</li>
+          <li>Single-cycle WAV folders</li>
+        </ul>
+        <p>After import, save your own banks as <code>.reelwt</code> and patches as <code>.reelpreset</code> so they travel with your project. See the product page for the full interop list: <a href="/reelsynth/">ReelSynth</a>.</p>
+
+        <h2>Export tables from Vital</h2>
+        <p>1. Open the wavetable you want in Vital.</p>
+        <p>2. Export or save the table in <code>.vitaltable</code> form (or export frames as WAV cycles if you prefer a folder of single cycles).</p>
+        <p>3. Keep exports in a clear folder, for example <code>Wavetables/Vital/</code>, so you can find them again in ReelSynth’s browser.</p>
+        <p>Vital docs: <a href="https://vital.audio/">vital.audio</a>.</p>
+
+        <h2>Export tables from Serum</h2>
+        <p>1. Open the Serum preset or wavetable you want to move.</p>
+        <p>2. Export the wavetable (or collect the WT frames Serum can write) into a folder you control.</p>
+        <p>3. Prefer a dedicated <code>Wavetables/Serum/</code> folder. Name files so you remember source and role (<code>Serum_bass_grit.wav</code>, and so on).</p>
+        <p>Serum product page: <a href="https://xferrecords.com/products/serum">xferrecords.com/products/serum</a>.</p>
+
+        <h2>Import into ReelSynth and load in Ableton Live</h2>
+        <p>1. Download and install ReelSynth from <a href="/reelsynth/#download">the download page</a>. No account required.</p>
+        <p>2. Open the standalone app or load the VST3/AU plugin on a MIDI track in Live.</p>
+        <p>3. Import the <code>.vitaltable</code>, Serum export, or WAV cycle folder into ReelSynth’s wavetable browser.</p>
+        <p>4. Play a short MIDI phrase. Sweep Position so you hear the table move. Save a <code>.reelpreset</code> once the motion and level feel right.</p>
+        <p>5. In Live, map Position and filter cutoff to Instrument Rack macros if you want one-knob control in the set.</p>
+        <p>If the plugin does not appear, enable VST3/AU in Preferences → Plug-Ins, Rescan, and restart Live. Full setup walkthrough: <a href="/blog/free-wavetable-synthesizer-for-ableton-get-started-with-reelsynth/">Free Wavetable Synthesizer for Ableton</a>.</p>
+
+        <h2>Shape the patch after import</h2>
+        <p>Import is only the start. Treat the table as raw material:</p>
+        <ul>
+          <li>Find a useful Position range, then automate it in clips for movement.</li>
+          <li>Add a low-pass filter and a short envelope for plucks, or slower envelopes for pads.</li>
+          <li>Keep unison voices modest so CPU stays manageable in a full arrangement.</li>
+          <li>Save named presets (<code>pad_vital_air_v1</code>, <code>bass_serum_move_v2</code>) so you can reload them in other sessions.</li>
+        </ul>
+        <p>When you hand the set to someone else, use Ableton’s Collect All and Save, or export stems plus a short README with Live version and that ReelSynth is required.</p>
+
+        <h2>FAQ</h2>
+        <p><strong>Do I need Serum or Vital installed to use imported tables?</strong><br />No. Once the table files are on disk and imported into ReelSynth, you play them through ReelSynth in Ableton.</p>
+        <p><strong>Is ReelSynth free?</strong><br />Yes. MIT licensed. Download without an account.</p>
+        <p><strong>Will imports sound identical to Serum or Vital?</strong><br />Tables carry waveform data. Filters, FX, and unison differ per engine, so expect to reshape the patch in ReelSynth.</p>
+        <p><strong>Can I use this with ReelStudio?</strong><br />Yes. ReelSynth is compatible with <a href="/studio/">ReelStudio</a> for offline rendering and patch export into studio pipelines.</p>
+      </div>
+      <p class="section-intro" style="margin-top: 2rem;"><a href="/reelsynth/#download">Download ReelSynth free →</a></p>
+    </article>
+
+    <footer class="site-footer">
+      <span>© Reeldemo</span>
+      <span><a href="https://github.com/reeldemo">github.com/reeldemo</a></span>
+    </footer>
+  </div>
+
+  <script src="../../shared.js"></script>
+</body>
+</html>
