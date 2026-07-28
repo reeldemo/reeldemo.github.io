@@ -64,10 +64,35 @@
         <p>For sidechain ducking, add Ableton Compressor on the ReelSynth track, enable Sidechain, and pick your kick track as the input. Tune ratio, attack, and release so pads breathe with the groove.</p>
         <p>Use Send knobs for reverb and delay on return tracks. Keep a dry copy on the source track so you can EQ or compress the original independently. Combine ReelSynth’s internal LFOs and envelopes with Live clip or arrangement automation on macros for section changes.</p>
 
+        <h2>First patch recipe (ten minutes)</h2>
+        <ol>
+          <li>Init patch. One oscillator. Unison off.</li>
+          <li>Load a simple table. Play a two-bar MIDI loop at a fixed velocity.</li>
+          <li>Automate Position slowly over eight bars. Find a range that moves without screaming.</li>
+          <li>Add a low-pass filter. Short envelope for a pluck, or slow attack for a pad.</li>
+          <li>Map Position and cutoff to Rack macros. Save the rack as <code>ReelSynth_starter</code>.</li>
+        </ol>
+        <p>That starter rack becomes your default for new tracks. Duplicate it before you go wild with unison so you always have a clean fallback.</p>
+
+        <h2>CPU tips for full arrangements</h2>
+        <p>Unison and high polyphony are the usual suspects. Arrange with lower voice counts, freeze when the part is locked, and raise the buffer while composing. Keep Vital-style GPU UIs on other tracks from stealing laptop fans during long sessions. ReelSynth’s Rust engine aims for predictable DSP; still treat it like any citizen of your template.</p>
+
         <h2>Performance tips, preset management, and exporting</h2>
         <p>Map three high-impact macros first: wavetable position, filter cutoff, and unison detune. Limit each macro range so one knob stays musical. Assign those macros to your controller in MIDI Map Mode.</p>
         <p>Name presets clearly (for example <code>bass_swept_v1</code> or <code>pad_lush_v2</code>). Save both the ReelSynth device preset and an Instrument Rack when macros and FX matter. Keep third-party wavetables in one folder with a source prefix such as <code>Vital_</code> or <code>Serum_</code>.</p>
         <p>When handing off a set, use Ableton’s Collect All and Save. For collaborators without the plugin, export stems and include a README with OS, Live version, and plugin version. ReelSynth also works with <a href="/studio/">ReelStudio</a> for offline rendering and patch export into studio pipelines.</p>
+
+        <h2>Linux notes</h2>
+        <p>If a Linux build is available on the download page, install the VST3 to your user or system VST3 path and add that folder in Live’s Plug-Ins preferences. Distro packaging differs. Prefer the official Reeldemo release over random mirrors. Confirm Live’s Linux support status for your host build before a gig.</p>
+
+        <h2>Push and controller mapping</h2>
+        <p>After you map Rack macros, enter MIDI Map Mode and assign three encoder knobs to those macros. Label the rack so Push’s parameter banks stay readable. Keep macro ranges narrow for live sets so a full knob twist stays musical under stage lighting and fat fingers.</p>
+
+        <h2>Building a bank for one project</h2>
+        <p>Create a folder <code>ProjectName/ReelSynth/</code> next to the Live project. Save every project-specific <code>.reelpreset</code> there. When the song is done, zip that folder with the project. Future-you will find the exact pads without digging through a global library.</p>
+
+        <h2>When to open standalone vs plugin</h2>
+        <p>Standalone is quieter for deep table browsing when Live’s set is already heavy. Design the patch, save, then load the preset in the plugin. Plugin wins when you need to hear the sound against the kick and vocal immediately. Many producers bounce between both in one evening.</p>
 
         <h2>Troubleshooting and compatibility checklist</h2>
         <p><strong>Plugin missing:</strong> Confirm AU/VST3 files are in the system folders. Enable the matching formats in Preferences → Plug-Ins, Rescan, restart Live. On Windows, try scanning once as administrator. On macOS, allow the binary in Privacy &amp; Security.</p>
@@ -75,6 +100,26 @@
         <p><strong>Clicks or pitch issues:</strong> Match Live’s sample rate to your audio interface, then restart Live.</p>
         <p><strong>Apple Silicon:</strong> Prefer the native Apple Silicon build when available. Match AU/VST3 to your Live build.</p>
         <p>More install detail lives on the <a href="/reelsynth/">ReelSynth product page</a> and in <a href="https://github.com/reeldemo/reelsynth">the GitHub repo</a>.</p>
+
+        <h2>Parameter map worth learning first</h2>
+        <ul>
+          <li><strong>Position:</strong> where you sit in the table. Automate this for motion.</li>
+          <li><strong>Filter cutoff / resonance:</strong> how bright and peaky the voice gets.</li>
+          <li><strong>Amp envelope:</strong> pluck versus pad versus drone.</li>
+          <li><strong>Unison / detune:</strong> width and thickness. Costly on CPU.</li>
+          <li><strong>FX send levels:</strong> prefer Live returns for shared space when mixing many tracks.</li>
+        </ul>
+        <p>Master those five before you hunt exotic warp modes. Most arrangement problems are Position and filter, not missing features.</p>
+
+        <h2>Saving for collaborators</h2>
+        <p>Save the Live set and the ReelSynth preset. If you used custom tables, keep the <code>.reelwt</code> bank beside the project. Zip the project folder after Collect All and Save. Tell collaborators which OS builds you used if someone hits Gatekeeper or SmartScreen prompts.</p>
+
+        <h2>Next reads</h2>
+        <ul>
+          <li><a href="/blog/import-vital-serum-wavetables-ableton-reelsynth/">Import Vital and Serum wavetables</a></li>
+          <li><a href="/blog/reelsynth-vs-vital-vs-serum-wavetable-comparison/">ReelSynth vs Vital vs Serum</a></li>
+          <li><a href="/blog/reelsynth-open-wavetable-synthesizer-instrument/">ReelSynth instrument overview</a></li>
+        </ul>
 
         <h2>FAQ</h2>
         <p><strong>Is ReelSynth free?</strong><br />Yes. Free to download and use, MIT licensed. No account required.</p>

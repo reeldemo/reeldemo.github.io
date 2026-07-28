@@ -82,6 +82,43 @@
         </ul>
         <p>When you hand the set to someone else, use Ableton’s Collect All and Save, or export stems plus a short README with Live version and that ReelSynth is required.</p>
 
+        <h2>Library hygiene</h2>
+        <p>Imports multiply folders fast. Keep a single root such as <code>D:\Wavetables\</code> with subfolders <code>Vital\</code>, <code>Serum\</code>, <code>WAV_cycles\</code>, and <code>ReelSynth_banks\</code>. Prefix filenames with the source so you remember origin when the same timbre exists in three formats.</p>
+        <p>After a successful import, save a <code>.reelwt</code> bank and a named <code>.reelpreset</code>. Prefer those ReelSynth files in shared Ableton projects so collaborators do not need Vital or Serum installed to hear the part.</p>
+        <p>When you Collect All and Save in Live, remember Ableton does not copy third-party plug-ins into the project. Include ReelSynth’s download link in a README next to the set.</p>
+
+        <h2>Common import mistakes</h2>
+        <ul>
+          <li>Expecting a full Serum preset (FX, unison, macros) to appear unchanged. Tables move; the rest of the patch is rebuilt in ReelSynth.</li>
+          <li>Importing a long sample as if it were a short wavetable without checking Position. Sweep slowly and mark useful frame ranges.</li>
+          <li>Leaving imported files on a desktop that never gets backed up. Keep the library on the same drive as your Ableton Projects folder when you can.</li>
+          <li>Skipping a save after import. If Live crashes before you write a <code>.reelpreset</code>, you redo the work.</li>
+        </ul>
+
+        <h2>Ableton macros after import</h2>
+        <p>Group ReelSynth into an Instrument Rack. Map Macro 1 to Position across a musical range (not always 0-100%). Map Macro 2 to filter cutoff. Map Macro 3 to a mild drive or FX send. Record clip envelopes on Macro 1 for section movement. That pattern works the same whether the table came from Vital, Serum, or a WAV folder.</p>
+
+        <h2>A full evening workflow (example)</h2>
+        <p>Here is a concrete path many Ableton producers use when moving a favorite Vital or Serum table into a Live arrangement.</p>
+        <ol>
+          <li>Export the table from Vital or Serum into <code>Wavetables/Vital/</code> or <code>Wavetables/Serum/</code>.</li>
+          <li>Import into ReelSynth standalone. Find a Position sweet spot. Save <code>.reelpreset</code>.</li>
+          <li>Open your Live set. Load ReelSynth on a MIDI track. Load the preset.</li>
+          <li>Wrap in an Instrument Rack. Map Position and cutoff. Record eight bars of clip automation on Position.</li>
+          <li>Add Ableton EQ Eight and Compressor. Sidechain from the kick if needed.</li>
+          <li>Duplicate the track for a quieter layer an octave up. Pan slightly. Keep unison low.</li>
+          <li>Collect All and Save. Write a README with the ReelSynth download link.</li>
+        </ol>
+        <p>That evening ends with an editable Live part. You did not bounce a mystery stem. Collaborators can reopen the macros.</p>
+
+        <h2>When to keep Vital or Serum in the set anyway</h2>
+        <p>Import does not force you to delete the original plugin. Keep Serum on the lead if the client named it. Keep Vital on a design track while ReelSynth holds the shared pad. The goal is choice: tables you own should travel into the instrument that fits the handoff.</p>
+        <p>If a table sounds dull after import, check sample rate, Position range, and filter defaults before you blame the format. Most “it sounds different” reports are missing FX and unison, not broken frames.</p>
+
+        <h2>Legal and content notes</h2>
+        <p>Owning Serum or Vital for music production does not automatically mean every factory wavetable is free to redistribute as a pack. For personal sessions and client work inside your studio, importing tables you legally use is the common path. If you publish a public preset pack built from someone else’s factory tables, read that product’s license first.</p>
+        <p>ReelSynth’s MIT license covers the instrument. Your table content still follows whatever license came with the original bank.</p>
+
         <h2>FAQ</h2>
         <p><strong>Do I need Serum or Vital installed to use imported tables?</strong><br />No. Once the table files are on disk and imported into ReelSynth, you play them through ReelSynth in Ableton.</p>
         <p><strong>Is ReelSynth free?</strong><br />Yes. MIT licensed. Download without an account.</p>

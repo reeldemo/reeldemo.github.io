@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ReelSynth: Free Wavetable Synthesizer · Reeldemo Blog</title>
-  <meta name="description" content="ReelSynth is a free wavetable software synthesizer with an Ableton plugin. Import Vital and Serum tables, shape sound, and keep every parameter editable." />
+  <meta name="description" content="ReelSynth overview: free MIT wavetable instrument with Ableton plugin, Rust engine, Vital/Serum imports, open formats, and ReelStudio compatibility." />
   <meta name="theme-color" content="#3f595b" />
   <link rel="stylesheet" href="../../styles.css" />
 </head>
@@ -28,7 +28,7 @@
         <a href="/kaleidoscope/" data-nav="/kaleidoscope">Kaleidoscope</a>
         <a href="/blog/" data-nav="/blog">Blog</a>
         <a href="https://github.com/reeldemo">GitHub</a>
-        <a class="nav-cta" href="/studio/#waitlist">Join waitlist</a>
+        <a class="nav-cta" href="/reelsynth/#download">Download free</a>
       </nav>
     </header>
 
@@ -37,24 +37,80 @@
       <p class="blog-meta">2026-07-13 · Synthesizer</p>
       <h1>ReelSynth: Free Wavetable Synthesizer with Ableton Plugin</h1>
       <div class="prose">
-        <p>Most synth workflows end in a few macros and a bounce. <strong>ReelSynth</strong> is a free <strong>wavetable software synthesizer</strong> with an Ableton plugin, open formats, and a voice engine you can route, modulate, and export while keeping full authorship.</p>
+        <p><strong>ReelSynth</strong> is a free wavetable software synthesizer with an Ableton plugin. You download it, design patches, and play them on a Live MIDI track. Open source under MIT, built in Rust. This overview is for producers who want the instrument story in one place. Product page and download: <a href="/reelsynth/#download">reeldemo.io/reelsynth</a>.</p>
 
-        <h2>Built as an instrument</h2>
-        <p>ReelSynth is a sound source you sculpt directly. Tri-osc wavetable voices, ADSR envelopes, state-variable filters, an eight-slot modulation matrix, and a reorderable FX rack. Every parameter is addressable and automatable in Ableton.</p>
-        <p>The engine is MIT-licensed Rust, with a Python wheel for offline rendering inside <a href="/studio/">ReelStudio</a>. Use the standalone app or the Ableton plugin. The DSP and patch formats are ready for production sessions today.</p>
+        <h2>What it is</h2>
+        <p>ReelSynth is an instrument first. Multi-oscillator wavetable voice, envelopes, filter, modulation routing, and import/export oriented around production handoff. Use the standalone app for focused sound design, or load the Ableton plugin so macros and automation live next to your arrangement.</p>
+        <p>It is free. No account is required. Collaborators can install the same build to open your patches. That matters when a Live set leaves your studio.</p>
 
-        <h2>Wavetables you can own</h2>
-        <p>Import Vital <code>.vitaltable</code> banks, WAV single-cycle folders, and Serum <code>.fxp</code> wavetable subsets. Export to Vital, WAV frames, Serum RSWT, Ableton param JSON, SFZ, MIDI, 24-bit audio, or a <code>reelpack/</code> bundle. Patches live in <code>.reelpreset</code> JSON; banks in <code>.reelwt</code> binary. Both are documented and versioned.</p>
+        <h2>Architecture in plain language</h2>
+        <p>The audio engine is written in Rust. For producers, that mainly means a modern native DSP path aimed at predictable performance. You do not need to touch the source to make music. If you care about licenses and longevity, the MIT source is public on <a href="https://github.com/reeldemo/reelsynth">GitHub</a>.</p>
+        <p>Patches and banks use documented formats so you can archive and reopen work later. Offline rendering paths exist for studio pipelines that need stems and patches outside the Live UI.</p>
 
-        <h2>Where it sits in the stack</h2>
+        <h2>Ableton plugin workflow</h2>
+        <p>Install VST3 (and AU on Mac), enable the formats in Live Preferences → Plug-Ins, Rescan, then drag ReelSynth onto a MIDI track. Wrap it in an Instrument Rack and map three macros: wavetable position, filter cutoff, and a character control (detune, warp, or FX mix). Save that rack in your User Library.</p>
+        <p>Step-by-step setup: <a href="/blog/free-wavetable-synthesizer-for-ableton-get-started-with-reelsynth/">Get started with ReelSynth in Ableton</a>.</p>
+
+        <h2>Wavetables and formats you can own</h2>
+        <p>Import Vital <code>.vitaltable</code> banks, Serum-oriented wavetable content, and single-cycle WAV folders. After import, reshape the patch: filters and unison differ across engines. Save banks as <code>.reelwt</code> and patches as <code>.reelpreset</code>, and use <code>reelpack/</code> bundles when you want a portable folder of content.</p>
+        <p>Import walkthrough: <a href="/blog/import-vital-serum-wavetables-ableton-reelsynth/">Import Vital and Serum wavetables</a>.</p>
+
+        <h2>Open source and licensing</h2>
+        <p>MIT covers the software. Making and selling music with ReelSynth is normal studio practice. Redistributing modified plugin code is a different question. MIT is more permissive for embedding than GPL engines such as Surge XT. Closed freeware usually hides the source; here you can audit and keep the code. Longer license discussion: <a href="/blog/open-source-wavetable-synthesizers-compared/">Open source wavetable synthesizers compared</a>.</p>
+
+        <h2>Sound design habits that stick</h2>
+        <p>Start every new patch from init. Sweep Position until you hear a useful frame, then narrow the macro range so one knob stays musical. Add filter motion second. Save early with a clear name. Duplicate the rack before unison experiments so you can return to the clean version.</p>
+        <p>In Live, prefer clip envelopes on macros for section changes. Keep internal FX light until the dry voice sits in the mix. Sidechain with Ableton Compressor when pads fight the kick. Send to shared returns for reverb so every ReelSynth track shares the same room.</p>
+
+        <h2>Template placement</h2>
+        <p>Add a muted MIDI track with ReelSynth already loaded to your default Live template. Name it <code>RS_ready</code>. When inspiration hits, unmute and play. Keep a second chain in an Instrument Rack with a darker filter preset for bass duty. One instrument, two starting points.</p>
+        <p>For shared templates, put the download URL in a text clip on the track. Collect All and Save still will not pack the plug-in binary; the README does the rest.</p>
+
+        <h2>Who should skip ReelSynth (for now)</h2>
+        <p>If your entire workflow is Serum preset packs and client briefs demand Serum by name, buy Serum for that lane. If you only sketch inside Live Suite and never leave stock devices, Wavetable may be enough. If you want one free synth for FM, wavetable, and string models in a single UI, try Surge XT first. ReelSynth is for producers who want a free Ableton-oriented wavetable instrument with open formats and MIT-friendly installs.</p>
+
+        <h2>Where it sits next to ReelStudio</h2>
+        <p>ReelSynth is the free instrument. <a href="/studio/">ReelStudio</a> is the chat-driven studio / Ableton handoff product (waitlist). ReelSynth is compatible with ReelStudio for offline rendering and patch export when that pipeline is available. You can use ReelSynth today in Live without waiting on Studio.</p>
+        <p>Also in the Reeldemo family: <a href="/kaleidoscope/">Kaleidoscope</a> for ASCII visuals.</p>
+
+        <h2>How it compares (short)</h2>
         <ul>
-          <li><a href="/studio/">ReelStudio</a>: chat-driven compose and grade. ReelSynth renders offline stems and patches.</li>
-          <li><a href="/reelsynth/">ReelSynth</a>: free wavetable synthesizer with Ableton plugin for sound design.</li>
-          <li><a href="/kaleidoscope/">Kaleidoscope</a>: ASCII promos for product and social visuals.</li>
+          <li>Versus Serum: free MIT + Ableton focus vs paid hybrid preset culture. Full comparison: <a href="/blog/reelsynth-vs-vital-vs-serum-wavetable-comparison/">ReelSynth vs Vital vs Serum</a>.</li>
+          <li>Versus Vital free: Vital wins on flashy modulation UI; ReelSynth wins on MIT handoff and Ableton-oriented packaging.</li>
+          <li>Versus Ableton Wavetable: stock Suite device vs free plugin that also works when your Live edition lacks Wavetable. Detail: <a href="/blog/ableton-wavetable-vs-reelsynth/">Ableton Wavetable vs ReelSynth</a>.</li>
         </ul>
-        <p>If you want speed and editability, start with an instrument whose parameters survive the handoff into your Ableton session.</p>
+
+        <h2>Get started</h2>
+        <ol>
+          <li>Download the latest build from <a href="/reelsynth/#download">the ReelSynth page</a>.</li>
+          <li>Install and rescan plug-ins in Ableton Live.</li>
+          <li>Load an init patch, sweep Position, map two macros, save a rack.</li>
+          <li>Import a table you already own when you want familiar timbres.</li>
+        </ol>
+
+        <h2>Feature checklist (producer view)</h2>
+        <ul>
+          <li>Free download, MIT license, no account</li>
+          <li>Ableton plugin (VST3/AU) and standalone</li>
+          <li>Wavetable synthesis with modulation and filter path</li>
+          <li>Import Vital / Serum-oriented tables and WAV cycles</li>
+          <li>Open patch and bank formats for archiving</li>
+          <li>Rust audio engine; public GitHub source</li>
+          <li>Compatible with ReelStudio offline paths when available</li>
+        </ul>
+        <p>If a feature is not listed on <a href="/reelsynth/">the product page</a>, do not assume it. Check the latest release notes on GitHub.</p>
+
+        <h2>Roadmap mindset</h2>
+        <p>Treat ReelSynth as a living instrument. Download the latest build when you start a new album cycle. Keep project-local presets so an OS update mid-tour does not surprise you. File issues on GitHub when something breaks in Live; include OS and Live edition.</p>
+
+        <h2>FAQ</h2>
+        <p><strong>Is ReelSynth free?</strong><br />Yes. MIT licensed. No account required.</p>
+        <p><strong>Does it work in Ableton Live?</strong><br />Yes. VST3/AU plugin plus standalone.</p>
+        <p><strong>Is it an AI synth?</strong><br />No. It is a wavetable instrument. ReelStudio is the separate chat-driven studio product.</p>
+        <p><strong>Can I sell music made with it?</strong><br />Yes. Your tracks are your creative work.</p>
+        <p><strong>Where is the source?</strong><br /><a href="https://github.com/reeldemo/reelsynth">github.com/reeldemo/reelsynth</a>.</p>
       </div>
-      <p class="section-intro" style="margin-top: 2rem;"><a href="/reelsynth/">Explore ReelSynth →</a></p>
+      <p class="section-intro" style="margin-top: 2rem;"><a href="/reelsynth/#download">Download ReelSynth free →</a></p>
     </article>
 
     <footer class="site-footer">
