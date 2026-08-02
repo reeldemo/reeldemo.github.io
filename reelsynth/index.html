@@ -215,38 +215,41 @@
       </div>
 
       <div class="download-grid" role="list" aria-label="Platform downloads">
-        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="macos" data-arch="aarch64" data-asset="macos-aarch64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
+        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="macos" data-arch="aarch64" data-asset="macos-aarch64.pkg" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">macOS</span>
-          <span class="download-card__arch">Apple Silicon (M1+)</span>
+          <span class="download-card__arch">Apple Silicon (M1+) · .pkg installer</span>
           <span class="download-card__action btn primary">Download</span>
         </a>
-        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="macos" data-arch="x86_64" data-asset="macos-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
+        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="macos" data-arch="x86_64" data-asset="macos-x86_64.pkg" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">macOS</span>
-          <span class="download-card__arch">Intel (x86_64)</span>
+          <span class="download-card__arch">Intel (x86_64) · .pkg installer</span>
+          <span class="download-card__action btn primary">Download</span>
+        </a>
+        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="windows" data-arch="x86_64" data-asset="windows-x86_64-setup.exe" href="https://github.com/reeldemo/reelsynth/releases/latest">
+          <span class="download-card__platform">Windows</span>
+          <span class="download-card__arch">x86_64 · setup.exe</span>
           <span class="download-card__action btn primary">Download</span>
         </a>
         <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="linux" data-arch="x86_64" data-asset="linux-x86_64.tar.gz" href="https://github.com/reeldemo/reelsynth/releases/latest">
           <span class="download-card__platform">Linux</span>
-          <span class="download-card__arch">x86_64</span>
-          <span class="download-card__action btn primary">Download</span>
-        </a>
-        <a class="download-card" role="listitem" data-track-download data-product="reelsynth" data-platform="windows" data-arch="x86_64" data-asset="windows-x86_64.zip" href="https://github.com/reeldemo/reelsynth/releases/latest">
-          <span class="download-card__platform">Windows</span>
-          <span class="download-card__arch">x86_64</span>
+          <span class="download-card__arch">x86_64 · archive</span>
           <span class="download-card__action btn primary">Download</span>
         </a>
       </div>
 
       <div class="download-meta">
+        <p><strong>Installers</strong> put the standalone app, VST3, and Ableton editor on your machine. After install: quit Live → Preferences → Plug-ins → Rescan → load ReelSynth.</p>
+        <p><strong>Unsigned builds:</strong> macOS may need right-click → Open; Windows SmartScreen → More info → Run anyway.</p>
         <p><strong>System requirements:</strong> 64-bit OS with audio output. Linux needs ALSA or PulseAudio and X11 or Wayland for the UI. MIDI input is optional.</p>
         <p>
-          <strong>Build from source:</strong>
+          <strong>Build from source / portable archives:</strong>
           <a href="https://github.com/reeldemo/reelsynth">github.com/reeldemo/reelsynth</a>
-          (requires Rust 1.75+).
+          (requires Rust 1.85+).
           <a id="download-all-assets" href="https://github.com/reeldemo/reelsynth/releases/latest">All release assets</a>
         </p>
         <div class="chip-row" aria-label="Included binaries">
-          <span class="chip">reelsynth-app</span>
+          <span class="chip">standalone app</span>
+          <span class="chip">VST3 + editor</span>
           <span class="chip">reelsynth-export</span>
           <span class="chip">MIT license</span>
         </div>
