@@ -180,47 +180,24 @@
   <script src="../../waitlist.js"></script>
   <script src="../../download-tracking.js"></script>
   <script>
-    var FALLBACK_ZIP =
-      "https://github.com/reeldemo/reelsynth/releases/download/genre-tables-v1/reelsynth-genre-tables-500.zip";
+    initLeadMagnetDownload({
+      formId: "tables-lead-form",
+      statusId: "tables-lead-status",
+      gateId: "tables-gate",
+      unlockedId: "tables-unlocked",
+      downloadId: "tables-download",
+      product: "reelsynth_genre_tables",
+      source: "reeldemo.github.io/reelsynth/wavetables",
+      touchpoint: "lead_magnet",
+      storageKey: "reeldemo_genre_tables_v1",
+    });
 
-    function wireLeadMagnet(downloadUrl) {
-      initLeadMagnetDownload({
-        formId: "tables-lead-form",
-        statusId: "tables-lead-status",
-        gateId: "tables-gate",
-        unlockedId: "tables-unlocked",
-        downloadId: "tables-download",
-        downloadUrl: downloadUrl,
-        product: "reelsynth_genre_tables",
-        source: "reeldemo.github.io/reelsynth/wavetables",
-        touchpoint: "lead_magnet",
-        storageKey: "reeldemo_genre_tables_v1",
-      });
-
-      initDownloadTracking({
-        product: "reelsynth_genre_tables",
-        source: "reeldemo.github.io/reelsynth/wavetables",
-        touchpoint: "lead_magnet_download",
-        selector: "#tables-download",
-      });
-    }
-
-    fetch("https://api.github.com/repos/reeldemo/reelsynth/releases/tags/genre-tables-v1", {
-      headers: { Accept: "application/vnd.github+json" },
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error("no release yet");
-        return res.json();
-      })
-      .then(function (release) {
-        var asset = (release.assets || []).find(function (a) {
-          return a.name === "reelsynth-genre-tables-500.zip";
-        });
-        wireLeadMagnet((asset && asset.browser_download_url) || FALLBACK_ZIP);
-      })
-      .catch(function () {
-        wireLeadMagnet(FALLBACK_ZIP);
-      });
+    initDownloadTracking({
+      product: "reelsynth_genre_tables",
+      source: "reeldemo.github.io/reelsynth/wavetables",
+      touchpoint: "lead_magnet_download",
+      selector: "#tables-download",
+    });
   </script>
 </body>
 </html>

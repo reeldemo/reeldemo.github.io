@@ -1,6 +1,8 @@
 .env.local
 .env
 .env.*
+ops/leadmagnet/.anon.key.tmp
+ops/leadmagnet/*.key
 reelsynth/wavetables/pack/
 reelsynth/wavetables/genre-pack/
 reelsynth/wavetables/*.zip

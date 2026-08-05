@@ -1,7 +1,7 @@
 (function () {
   var SUPABASE_URL = "https://supabase.reeldemo.io";
   var SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjIwMDAwMDAwMDAsImlhdCI6MCwiaXNzIjoic3VwYWJhc2UiLCJyb2xlIjoiYW5vbiJ9.xOErZmPb_tPco7QXT55pzPBE7ce36f9dkfZGEIf3Xb8";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.I8fF0UAMPf2P4fUhN5QJ1S1nomhNre9qRBHiiimMdhc";
 
   function trackDownloadEvent(payload) {
     fetch(SUPABASE_URL + "/rest/v1/download_events", {
