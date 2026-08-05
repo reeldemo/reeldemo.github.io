@@ -2476,9 +2476,14 @@ pre code,
   }
 }
 
-/* ── Waitlist forms ── */
+.lead-magnet-unlocked {
+  margin-top: 0.5rem;
+}
 
-.waitlist-form {
+.lead-magnet-gate .waitlist-form {
+  margin-top: 0.25rem;
+}
+
   display: flex;
   flex-direction: column;
   gap: 1.125rem;

@@ -42,18 +42,21 @@
         body: JSON.stringify(body),
       })
         .then(function (res) {
-          if (res.status === 201 || res.status === 204) {
+          if (res.status === 201 || res.status === 204 || res.status === 409) {
+            var already = res.status === 409;
             setFormStatus(
               statusEl,
-              opts.successMessage ||
-                "You're on the Studio waitlist. We'll email early access details soon.",
+              already
+                ? opts.alreadyMessage ||
+                    "You're already on the list — download unlocked."
+                : opts.successMessage ||
+                    "You're on the Studio waitlist. We'll email early access details soon.",
               "success"
             );
-            form.reset();
-            return;
-          }
-          if (res.status === 409) {
-            setFormStatus(statusEl, "That email is already on the waitlist.", "error");
+            if (!already) form.reset();
+            if (typeof opts.onSuccess === "function") {
+              opts.onSuccess({ already: already, email: body.email });
+            }
             return;
           }
           return res.text().then(function (t) {
@@ -61,11 +64,64 @@
           });
         })
         .catch(function (err) {
-          setFormStatus(statusEl, "Could not join waitlist. Try again later.", "error");
+          setFormStatus(
+            statusEl,
+            opts.errorMessage || "Could not join waitlist. Try again later.",
+            "error"
+          );
           console.error(err);
         });
     });
   }
 
+  /** Email-gate a download: unlock UI + trigger zip after successful waitlist insert. */
+  function initLeadMagnetDownload(opts) {
+    var unlockKey = opts.storageKey || "reeldemo_leadmagnet_unlocked";
+    var gate = document.getElementById(opts.gateId);
+    var unlocked = document.getElementById(opts.unlockedId);
+    var downloadBtn = document.getElementById(opts.downloadId);
+    var downloadUrl = opts.downloadUrl;
+    if (!gate || !unlocked || !downloadBtn || !downloadUrl) return;
+
+    function reveal(autoStart) {
+      try {
+        sessionStorage.setItem(unlockKey, "1");
+      } catch (e) {}
+      gate.hidden = true;
+      unlocked.hidden = false;
+      downloadBtn.href = downloadUrl;
+      if (autoStart) {
+        // Defer so the success message paints first.
+        setTimeout(function () {
+          window.location.href = downloadUrl;
+        }, 400);
+      }
+    }
+
+    try {
+      if (sessionStorage.getItem(unlockKey) === "1") {
+        reveal(false);
+      }
+    } catch (e) {}
+
+    initWaitlistForm({
+      formId: opts.formId,
+      statusId: opts.statusId,
+      product: opts.product || "reelsynth_starter_tables",
+      source: opts.source || "reeldemo.github.io/reelsynth/wavetables",
+      touchpoint: opts.touchpoint || "lead_magnet",
+      optionalField: opts.optionalField || "focus",
+      successMessage:
+        opts.successMessage || "Thanks — your download is starting.",
+      alreadyMessage:
+        opts.alreadyMessage || "Welcome back — download unlocked.",
+      onSuccess: function () {
+        reveal(true);
+        if (typeof opts.onUnlocked === "function") opts.onUnlocked();
+      },
+    });
+  }
+
   window.initWaitlistForm = initWaitlistForm;
+  window.initLeadMagnetDownload = initLeadMagnetDownload;
 })();

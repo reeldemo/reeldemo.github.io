@@ -1,3 +1,5 @@
 .env.local
 .env
 .env.*
+reelsynth/wavetables/pack/
+reelsynth/wavetables/*.zip
