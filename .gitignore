@@ -2,4 +2,5 @@
 .env
 .env.*
 reelsynth/wavetables/pack/
+reelsynth/wavetables/genre-pack/
 reelsynth/wavetables/*.zip
