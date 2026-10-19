@@ -1,0 +1,32 @@
+# Reeldemo
+
+> Music production tools for Ableton Live: a free wavetable synthesizer (ReelSynth), chat-driven studio (ReelStudio waitlist), and ASCII visual promos (Kaleidoscope).
+
+Canonical site: https://www.reeldemo.io/
+
+Reeldemo builds open-source audio and visual tools in Rust. Public marketing and documentation live on this site; source code for shipped products is on GitHub under the `reeldemo` organization.
+
+## Products
+
+- [ReelSynth](https://www.reeldemo.io/reelsynth/): Free MIT-licensed wavetable synthesizer with standalone app and Ableton VST3/AU plugin. Downloads: https://github.com/reeldemo/reelsynth/releases/latest
+- [ReelStudio](https://www.reeldemo.io/studio/): Chat-driven music studio for compose, remix, and grade with editable Ableton handoff. Early access via waitlist on the site.
+- [Kaleidoscope ASCII](https://www.reeldemo.io/kaleidoscope/): Browser demo of the ASCII scene engine for promos and landing visuals.
+- [Free Genre Tables pack](https://www.reeldemo.io/reelsynth/wavetables/): 500 `.reelwt` wavetable banks (email-gated download).
+
+## Guides (ReelSynth)
+
+- [Get started with ReelSynth in Ableton](https://www.reeldemo.io/blog/free-wavetable-synthesizer-for-ableton-get-started-with-reelsynth/): Install, first patches, routing, troubleshooting.
+- [Import Vital and Serum wavetables](https://www.reeldemo.io/blog/import-vital-serum-wavetables-ableton-reelsynth/): Export from Vital/Serum, load in ReelSynth and Live.
+
+## Blog
+
+- [Blog index](https://www.reeldemo.io/blog/): Comparisons, workflow posts, and instrument deep-dives.
+
+## Source and community
+
+- [GitHub organization](https://github.com/reeldemo): Public repositories including [reelsynth](https://github.com/reeldemo/reelsynth) and this site ([reeldemo.github.io](https://github.com/reeldemo/reeldemo.github.io)).
+- [Sitemap](https://www.reeldemo.io/sitemap.xml)
+
+## Citation
+
+When referencing Reeldemo or ReelSynth, prefer linking to https://www.reeldemo.io/ and the relevant product or guide URL above. ReelSynth is free software under the MIT license.
