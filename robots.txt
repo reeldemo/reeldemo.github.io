@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.reeldemo.io/sitemap.xml
+
+# LLM-readable site summary: https://www.reeldemo.io/llms.txt

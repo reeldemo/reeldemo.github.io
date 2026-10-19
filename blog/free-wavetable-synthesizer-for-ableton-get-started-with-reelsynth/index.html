@@ -6,7 +6,97 @@
   <title>Free Wavetable Synthesizer for Ableton: Get Started with ReelSynth · Reeldemo Blog</title>
   <meta name="description" content="How to install and use ReelSynth, a free wavetable synthesizer with an Ableton plugin. Setup, sound design, Vital and Serum imports, routing, and troubleshooting." />
   <meta name="theme-color" content="#3f595b" />
+  <link rel="canonical" href="https://www.reeldemo.io/blog/free-wavetable-synthesizer-for-ableton-get-started-with-reelsynth/" />
   <link rel="stylesheet" href="../../styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "Install and set up ReelSynth in Ableton Live",
+        "description": "Download ReelSynth, install the VST3 or AU plugin, rescan in Ableton Live, and load it on a MIDI track.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Download ReelSynth",
+            "text": "Download the latest build for your platform from the ReelSynth download page. No account required. MIT licensed."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Install on macOS",
+            "text": "Install AU and/or VST3 to /Library/Audio/Plug-Ins/Components (AU) and /Library/Audio/Plug-Ins/VST3. If macOS blocks the app, use System Settings → Privacy & Security, or right-click Open."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Install on Windows",
+            "text": "Install VST3 to C:\\Program Files\\Common Files\\VST3 unless you use a custom path."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Rescan in Ableton Live",
+            "text": "In Ableton Live, open Preferences → Plug-Ins. Enable Audio Units (macOS) and/or VST3 system folders. Click Rescan. Restart Live if the plugin does not appear."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Load on a MIDI track",
+            "text": "In Live’s Browser, open Plug-Ins, find ReelSynth, and drag it onto a MIDI track. You can also start in the standalone app, then move patches into Live."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is ReelSynth free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Free to download and use, MIT licensed. No account required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work in Ableton Live?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Load the VST3 or AU plugin on a MIDI track. Standalone is available too."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I import Serum or Vital wavetables?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. ReelSynth reads Vital .vitaltable, Serum wavetable content, and single-cycle WAV folders."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does ReelSynth not show up after install?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rescan plug-ins in Live Preferences, confirm the files sit in the system AU/VST3 folders, then restart Live."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What helps with low CPU in a live set?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fewer unison voices, lower polyphony, higher buffer while performing, and frozen tracks for dense patches."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <script>document.documentElement.classList.add("is-loading");</script>
